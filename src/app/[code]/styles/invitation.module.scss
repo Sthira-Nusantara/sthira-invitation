@@ -1,0 +1,30 @@
+@import './variable.scss';
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.btnVideo {
+    display: inline-block;
+    padding: 8px;
+    border: none;
+    border-radius: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    background-color: $btn-color;
+    color: #fff;
+    width: ($envelope-width - 20);
+    position: relative;
+
+    &:hover {
+        background-color: darken($btn-color, 15%);
+    }
+}

@@ -1,0 +1,115 @@
+@import './variable.scss';
+
+.envelope {
+    position: relative;
+    width: $envelope-width;
+    height: $envelope-height;
+    border-bottom-left-radius: $envelope-border-radius;
+    border-bottom-right-radius: $envelope-border-radius;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $envelope-color-flap;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
+.flap {
+    border-left: ($envelope-width / 2) solid transparent;
+    border-right: ($envelope-width / 2) solid transparent;
+    border-bottom: ($envelope-height / 2) - 8 solid transparent; /* a little smaller */
+    border-top: ($envelope-height / 2) + 8 solid $envelope-color-flap; /* a little larger */
+    transform-origin: top;
+    pointer-events: none;
+    transform: rotateX(180deg);
+    transition: transform 0.4s ease, z-index 0.6s;
+    z-index: 1;
+}
+.pocketWrapper {
+    width: $envelope-width;
+    height: $envelope-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .pocket {
+        border-left: ($envelope-width / 2) solid $envelope-color;
+        border-right: ($envelope-width / 2) solid $envelope-color;
+        border-bottom: ($envelope-height / 2) solid $envelope-color2;
+        border-top: ($envelope-height / 2) solid transparent;
+        border-bottom-left-radius: $envelope-border-radius;
+        border-bottom-right-radius: $envelope-border-radius;
+        width: $envelope-width;
+        position: absolute;
+        z-index: 3;
+    }
+
+    .image {
+        border-radius: 100px;
+        background-color: $envelope-color2;
+        position: relative;
+        z-index: 4;
+    }
+}
+.letter {
+    position: relative;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: $envelope-border-radius;
+    color: #050505;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+    padding: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: auto;
+
+    .greeting {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: space-between;
+
+        .welcomeMessage {
+            text-align: justify;
+            text-justify: inter-word;
+            font-size: 14px;
+        }
+
+        .regards {
+            text-align: left;
+            font-size: 14px;
+        }
+    }
+}
+
+.words {
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    height: 14%;
+    background-color: #eeeff0;
+}
+
+.glowingText {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000000; /* Black text color */
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+    white-space: nowrap;
+}
