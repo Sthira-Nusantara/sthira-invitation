@@ -36,3 +36,5 @@ yarn-error.log*
 next-env.d.ts
 
 /src/assets/invitations_data.json
+
+.env

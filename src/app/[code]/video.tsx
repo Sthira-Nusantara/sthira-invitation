@@ -28,7 +28,7 @@ export default function Video({
 
         if (!localPlayer) {
             localPlayer = YouTubePlayer(youtubeRef.current!, {
-                videoId: 'yabDCV4ccQs',
+                videoId: process.env.NEXT_PUBLIC_INVITATION_VIDEO_ID,
                 height: '100%',
                 width: '100%',
             })
