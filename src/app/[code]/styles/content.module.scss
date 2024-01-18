@@ -1,6 +1,137 @@
 .wrapper {
-    height: 100vh;
-    padding-top: 32px;
-    padding: 16px;
-    padding-bottom: 32px;
+    min-height: 100vh;
+    background-image: url('../../../assets/papper.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 16px 12px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.4);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    * {
+        position: relative;
+        z-index: 2;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    .info {
+        .address {
+            font-size: 12px;
+            text-align: center;
+            margin: 8px 0;
+        }
+
+        .date {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 8px 0;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 20px;
+            margin: 8px 0;
+        }
+
+        .map {
+            width: 100%;
+            height: 300px;
+            margin: 12px 0;
+            border-radius: 12px;
+        }
+    }
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    color: #3498db;
+    background-color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background-color: #3498db;
+        color: #fff;
+    }
+}
+
+.countdownContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
+    height: 320px;
+    width: 320px;
+    border-radius: 320px;
+
+    background-color: transparent;
+    background-image: url('../../../assets/logo.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 300px 300px;
+
+    .countdownUpside {
+        width: 100%;
+        font-size: 32px;
+        text-align: center;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .countdownDownside {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 50%;
+    }
+
+    .countdownPartition {
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        padding: 15px 0;
+    }
+
+    .countdownItem {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .countdownLabel {
+        font-size: 14px;
+    }
 }

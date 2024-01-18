@@ -12,7 +12,7 @@ export function useEnvelopeLetterAnimation(isOpen: boolean) {
     const scaleAnimation = useSpring({
         ref: scaleAnimationRef,
         width: isOpen ? '100%' : '90%',
-        height: isOpen ? '100%' : '90%',
+        height: isOpen ? '150%' : '90%',
         config: config.stiff,
     })
 
