@@ -6,7 +6,6 @@ import Content from './content'
 import Envelope from './envelope'
 import styles from './styles/invitation.module.scss'
 import Video from './video'
-import { handleExitFullscreen } from '@/utils/helpers'
 
 export default function Invitation({ user }: { user: InvitationData }) {
     const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false)
@@ -46,13 +45,9 @@ export default function Invitation({ user }: { user: InvitationData }) {
                     onVideoEnded={async player => {
                         setMode(mode => {
                             if (mode === 'video') {
-                                handleExitFullscreen(document)
-                                    .catch(console.error)
-                                    .finally(() => {
-                                        setTimeout(async () => {
-                                            pageRef.current?.scrollIntoView({ behavior: 'smooth' })
-                                        }, 500)
-                                    })
+                                setTimeout(async () => {
+                                    pageRef.current?.scrollIntoView({ behavior: 'smooth' })
+                                }, 500)
                             }
                             return 'content'
                         })

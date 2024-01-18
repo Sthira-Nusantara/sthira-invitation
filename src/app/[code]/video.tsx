@@ -1,3 +1,4 @@
+import { handleExitFullscreen, handleFullScreen } from '@/utils/helpers'
 import { useEffect, useRef, useState } from 'react'
 import YouTubePlayer from 'youtube-player'
 import styles from './styles/video.module.scss'
@@ -12,7 +13,6 @@ export default function Video({
     onVideoEnded?: (player: IYoutubePlayer) => Promise<void> | void
 }) {
     const youtubeRef = useRef<HTMLDivElement>(null)
-    const youtubeWrapperRef = useRef<HTMLDivElement>(null)
 
     const [player, setPlayer] = useState<IYoutubePlayer>()
 
@@ -22,7 +22,7 @@ export default function Video({
     }, [play])
 
     const playVideo = async () => {
-        if (!youtubeRef.current || !youtubeWrapperRef.current) return
+        if (!youtubeRef.current) return
 
         let localPlayer = player
 
@@ -42,6 +42,7 @@ export default function Video({
                 // '5': 'video cued'
 
                 if (event.data === 0) {
+                    await handleExitFullscreen(document).catch(console.error)
                     await onVideoEnded?.(localPlayer!)
                 }
             })
@@ -49,12 +50,16 @@ export default function Video({
             setPlayer(localPlayer)
         }
 
+        const iframe = await localPlayer.getIframe()
+
         await localPlayer.unMute()
         await localPlayer.playVideo()
+
+        await handleFullScreen(iframe)
     }
 
     return (
-        <div ref={youtubeWrapperRef} className={styles.wrapper}>
+        <div className={styles.wrapper}>
             <div ref={youtubeRef} />
         </div>
     )
