@@ -46,10 +46,13 @@ export default function Invitation({ user }: { user: InvitationData }) {
                     onVideoEnded={async player => {
                         setMode(mode => {
                             if (mode === 'video') {
-                                setTimeout(async () => {
-                                    await handleExitFullscreen(document).catch(console.error)
-                                    pageRef.current?.scrollIntoView({ behavior: 'smooth' })
-                                }, 500)
+                                handleExitFullscreen(document)
+                                    .catch(console.error)
+                                    .finally(() => {
+                                        setTimeout(async () => {
+                                            pageRef.current?.scrollIntoView({ behavior: 'smooth' })
+                                        }, 500)
+                                    })
                             }
                             return 'content'
                         })
