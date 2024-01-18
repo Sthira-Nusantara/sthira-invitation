@@ -1,12 +1,23 @@
-import Countdown, { CountdownRendererFn } from 'react-countdown'
+import { SpringValue, animated, config, useSpring } from '@react-spring/web'
+import Countdown, { CountdownRenderProps } from 'react-countdown'
 import styles from './styles/content.module.scss'
 
-const renderer: CountdownRendererFn = ({ days, hours, minutes, seconds, completed }) => {
+const mapsHref =
+    'https://www.google.com/maps/place/PT.+STHIRA+NUSANTARA/@-6.143754,106.8314406,17z/data=!3m1!4b1!4m6!3m5!1s0x2e69f5f0446849bf:0x3f0461ea474813d2!8m2!3d-6.143754!4d106.8314406!16s%2Fg%2F1pzt98t3r?entry=ttu'
+
+const renderer = ({
+    days,
+    hours,
+    minutes,
+    seconds,
+    completed,
+    boxShadow,
+}: CountdownRenderProps & { boxShadow: SpringValue<string> }) => {
     if (completed) {
         return <span className={styles.countdownComplete}>Countdown Complete!</span>
     } else {
         return (
-            <div className={styles.countdownContainer}>
+            <animated.div className={styles.countdownContainer} style={{ boxShadow }}>
                 {!!days && <div className={styles.countdownUpside}>{days} hari</div>}
                 <div className={styles.countdownDownside}>
                     {!!hours && (
@@ -24,21 +35,35 @@ const renderer: CountdownRendererFn = ({ days, hours, minutes, seconds, complete
                         <span className={styles.countdownLabel}>detik</span>
                     </div>
                 </div>
-            </div>
+            </animated.div>
         )
     }
 }
 
-const mapsHref =
-    'https://www.google.com/maps/place/PT.+STHIRA+NUSANTARA/@-6.143754,106.8314406,17z/data=!3m1!4b1!4m6!3m5!1s0x2e69f5f0446849bf:0x3f0461ea474813d2!8m2!3d-6.143754!4d106.8314406!16s%2Fg%2F1pzt98t3r?entry=ttu'
-
 export default function Content() {
+    const [{ boxShadow }] = useSpring(
+        () => ({
+            from: { boxShadow: '0px 0px 10px rgba(208, 0, 0, 0.2)' },
+            to: [
+                { boxShadow: '0px 0px 10px rgba(208, 0, 0, 0.2)' },
+                { boxShadow: '0px 0px 15px rgba(208, 0, 0, 0.4)' },
+                { boxShadow: '0px 0px 20px rgba(208, 0, 0, 0.6)' },
+                { boxShadow: '0px 0px 25px rgba(208, 0, 0, 0.8)' },
+                { boxShadow: '0px 0px 30px 10px rgba(208, 0, 0, 0.2)' }, // Adjust the spread and alpha value
+            ],
+            config: config.molasses,
+            loop: {
+                reverse: true,
+            },
+        }),
+        []
+    )
     const targetDate = new Date('2024-02-18T16:00:00')
 
     return (
         <div className={styles.wrapper}>
             <h1>Sthira Invitation</h1>
-            <Countdown date={targetDate} renderer={renderer} />
+            <Countdown date={targetDate} renderer={props => renderer({ ...props, boxShadow })} />
             <div className={styles.info}>
                 <h2>Grand Opening PT. Sthira Nusantara</h2>
                 <p className={styles.date}>

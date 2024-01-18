@@ -25,6 +25,8 @@ export default function Invitation({ user }: { user: InvitationData }) {
         opacity: mode === 'content' ? 1 : 0,
     })
 
+    return <Content />
+
     return (
         <main className={styles.main}>
             {mode === 'envelope' && (
