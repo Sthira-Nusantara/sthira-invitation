@@ -29,3 +29,22 @@ export const handleFullScreen = async (element: HTMLElement): Promise<void> => {
         return el.msRequestFullscreen()
     }
 }
+
+export const padStartNum = (num: number, total = 2): string => {
+    return num.toString().padStart(total, '0')
+}
+
+export const monthsInIndonesia: Record<number, string> = {
+    0: 'Januari',
+    1: 'Februari',
+    2: 'Maret',
+    3: 'April',
+    4: 'Mei',
+    5: 'Juni',
+    6: 'Juli',
+    7: 'Agustus',
+    8: 'September',
+    9: 'Oktober',
+    10: 'November',
+    11: 'Desember',
+}

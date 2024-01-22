@@ -1,65 +1,150 @@
 .wrapper {
     min-height: 100vh;
-    background-image: url('../../../assets/papper.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 16px 12px;
+    padding: 24px 22px;
     position: relative;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-
-    &::before {
-        content: '';
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.4);
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
-    }
+    background: white;
+    color: black;
+    overflow: hidden;
 
     * {
         position: relative;
         z-index: 2;
     }
 
-    h1 {
+    .logoBG {
+        position: absolute;
+        height: auto;
+        width: 800px;
+        opacity: 0.2;
+        bottom: 0px;
+        z-index: 1;
+        right: -520px;
+    }
+
+    .allison {
         text-align: center;
-        font-size: 32px;
+        color: black;
+        font-size: 28px;
         font-weight: bold;
     }
 
-    .info {
-        .address {
-            font-size: 14px;
-            text-align: center;
-            margin: 8px 0;
-        }
-
+    .dateWrapper {
         .date {
-            font-size: 18px;
-            font-weight: bold;
+            color: black;
+            font-size: 16px;
             text-align: center;
-            margin: 8px 0;
         }
 
-        h2 {
+        .countdown {
+            color: black;
             text-align: center;
-            font-size: 20px;
-            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            p .value {
+                font-weight: bold;
+                font-size: 16px;
+            }
+            p .label {
+                font-size: 12px;
+                margin-left: 3px;
+            }
+
+            .spacer {
+                margin-left: 10px;
+                margin-right: 10px;
+                height: 20px;
+                border-left: 2px solid black;
+            }
         }
+    }
+
+    .titleWrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+            color: black;
+            font-size: 18px;
+            text-align: center;
+            font-weight: 400;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 75px;
+        }
+    }
+
+    .quoteWrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-top: 32px;
+        padding-bottom: 32px;
+        position: relative;
+
+        .allison {
+            font-weight: 400;
+            text-align: left;
+        }
+
+        .quote {
+            font-size: 12px;
+        }
+
+        &::before {
+            content: '';
+            width: 75%;
+            border-top: 3px solid rgb(193, 193, 193);
+            top: 0;
+            position: absolute;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+
+        &::after {
+            content: '';
+            width: 75%;
+            border-top: 3px solid rgb(193, 193, 193);
+            bottom: 0;
+            position: absolute;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+    }
+
+    .locationWrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
 
         .map {
+            margin-top: 10px;
+            margin-bottom: 5px;
             width: 100%;
+            border-radius: 10px;
             height: 300px;
-            margin: 12px 0;
-            border-radius: 12px;
+        }
+
+        h3 {
+            font-weight: 400;
+            margin-bottom: 3px;
+        }
+
+        .detail {
+            font-size: 14px;
+            text-align: justify;
         }
     }
 }
