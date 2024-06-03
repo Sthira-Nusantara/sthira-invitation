@@ -1,3 +1,4 @@
+import Development from '@/modules/404/components/development'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import Link from 'next/link'
@@ -75,7 +76,11 @@ const Menu = () => {
                 </div>
             </div>
 
-            <div className="menu-link"></div>
+            <div className="menu-link">
+                <div className="w-full max-w-96 mx-auto">
+                    <Development />
+                </div>
+            </div>
         </header>
     )
 }
