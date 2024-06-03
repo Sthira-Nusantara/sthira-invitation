@@ -171,11 +171,11 @@ export default function BackText({
     }
 
     return (
-        <div className="hero overflow-visible relative" ref={heroRef}>
+        <div className="hero overflow-hidden relative" ref={heroRef}>
             <div ref={backTextRef} className="back-text">
                 {headingRender()}
             </div>
-            <div className={`${className || ''}`}>{children}</div>
+            <div className={['mx-4', className].join(' ')}>{children}</div>
         </div>
     )
 }

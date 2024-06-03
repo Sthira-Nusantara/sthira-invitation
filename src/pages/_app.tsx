@@ -1,5 +1,6 @@
 import Footer from '@/components/footer/footer'
 import Menu from '@/components/menu/menu'
+import OnProgressBar from '@/components/on-progress'
 import AppProvider from '@/context/app/provider'
 import '@/styles/globals.css'
 import { useGSAP } from '@gsap/react'
@@ -19,18 +20,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <AppProvider>
             <Menu />
 
-            {Component.name !== 'VirtualTourPage' ? (
-                <>
-                    <main className="main">
-                        <Component {...pageProps} />
-                    </main>
-                    <Footer />
-                </>
-            ) : (
-                <main>
-                    <Component {...pageProps} />
-                </main>
-            )}
+            <main className="main">
+                <Component {...pageProps} />
+            </main>
+            <Footer />
+            <OnProgressBar />
         </AppProvider>
     )
 }

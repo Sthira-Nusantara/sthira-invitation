@@ -2,6 +2,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
+import OnProgressBar from '../on-progress'
 
 const Menu = () => {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -52,19 +53,22 @@ const Menu = () => {
     return (
         <header>
             <div className="head-menu">
-                <div className="logo">
-                    <Link href="/">
-                        Sthira
-                        <br />
-                        Nusantara.
-                    </Link>
-                </div>
-                <div className="btn" id="toggle-btn" onClick={toggleMenu}>
-                    <div className="btn-outline btn-outline-1"></div>
-                    <div className="btn-outline btn-outline-2"></div>
-                    <div id="hamburger">
-                        <span className="top" />
-                        <span className="bottom" />
+                <OnProgressBar />
+                <div className="flex justify-between items-center">
+                    <div className="logo">
+                        <Link href="/">
+                            Sthira
+                            <br />
+                            Nusantara.
+                        </Link>
+                    </div>
+                    <div className="btn" id="toggle-btn" onClick={toggleMenu}>
+                        <div className="btn-outline btn-outline-1"></div>
+                        <div className="btn-outline btn-outline-2"></div>
+                        <div id="hamburger">
+                            <span className="top" />
+                            <span className="bottom" />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -7,10 +7,6 @@
     @apply text-gray-200 opacity-10 font-eczar absolute -z-10 overflow-hidden whitespace-nowrap font-bold m-0 p-0;
 }
 
-.hero {
-    @apply m-4;
-}
-
 .hero .hero-tagline .tagline {
     @apply font-eczar font-bold text-5xl;
 }

@@ -1,5 +1,5 @@
 .head-menu {
-    @apply fixed z-[999999] top-0 flex justify-between items-center w-screen;
+    @apply fixed z-[999999] top-0 w-screen;
 }
 
 #spinning-circle {
