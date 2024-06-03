@@ -1,0 +1,79 @@
+.hero {
+    /*max-width: 1024px;*/
+    @apply mx-auto;
+}
+
+.hero .back-text {
+    @apply text-gray-200 opacity-10 font-eczar absolute -z-10 overflow-hidden whitespace-nowrap font-bold m-0 p-0;
+}
+
+.hero {
+    @apply m-4;
+}
+
+.hero .hero-tagline .tagline {
+    @apply font-eczar font-bold text-5xl;
+}
+
+.hero .hero-tagline .tagline span {
+    @apply text-red-600;
+}
+
+.hero .hero-tagline .wording {
+    @apply text-red-600 text-xl mt-5;
+}
+
+.hero .hero-description {
+    @apply mt-5;
+}
+
+.hero .hero-description .description-main {
+    @apply font-eczar text-2xl leading-10;
+}
+
+.hero .hero-description .description-secondary {
+    @apply text-sm text-gray-600 mt-2 leading-7;
+}
+
+.hero-description .divider {
+    @apply border-b-white mt-4;
+}
+
+.hero-description .call-button {
+    @apply flex text-gray-200 no-underline justify-center items-center w-fit rounded-full bg-red-600 text-sm;
+}
+
+.hero-description .call-button.drop-fixed {
+    @apply rounded-full p-5 fixed bottom-5 right-5 z-50;
+}
+
+/* Large devices (desktops, 768px and up) */
+@media only screen and (min-width: 769px) {
+    .hero .hero-tagline {
+        @apply ml-32;
+    }
+
+    .hero .hero-tagline .tagline {
+        @apply max-w-xl text-[4.5rem];
+    }
+
+    .hero .hero-tagline .wording {
+        @apply text-[2rem];
+    }
+
+    .hero .hero-description {
+        @apply max-w-xl mt-28 ml-auto mr-16;
+    }
+
+    .hero .hero-description .description-main {
+        @apply text-2xl leading-10;
+    }
+
+    .hero .hero-description .description-secondary {
+        @apply text-xl leading-10;
+    }
+
+    .hero-description .call-button {
+        @apply text-xl;
+    }
+}

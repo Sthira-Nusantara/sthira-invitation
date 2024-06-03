@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('../../node_modules/slick-carousel/slick/slick.css');
+@import url('../../node_modules/slick-carousel/slick/slick-theme.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+    --bg: #121212;
+    --text-color: #e2e2dc;
+    --overlay-bg: #e2e2dc;
+    --accent-red: #a5171b;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+/* For Webkit-based browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px; /* Adjust the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* Track background color */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: white; /* Scrollbar thumb color */
+    border-radius: 10px; /* Rounded corners */
+    border: 2px solid transparent; /* Adds space around the thumb */
+    background-clip: content-box; /* Ensures the border does not overlap the thumb */
+}
+
+/* For Firefox */
+html {
+    scrollbar-width: thin; /* Use thin scrollbar */
+    scrollbar-color: white transparent; /* Scrollbar color thumb track */
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    background: var(--bg);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+}
+
+.main {
+    @apply mt-[200px];
+}
+
+.overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+@import url('./menu.css');
+
+@import url('./hero.css');
+
+@import url('./award.css');
+
+@import url('./virtual-tour.css');
+
+@import url('./services.css');
+
+@import url('./contact-us.css');
+
+/*!* Start Index Content *!*/
+/*.content {*/
+/*}*/
+
+/*!* End Index Content *!*/
+
+@import url('./footer.css');
+
+.slick-prev {
+    @apply left-4 z-50;
+}
+
+.slick-next {
+    @apply right-4 z-50;
+}
+
+.slick-list {
+    @apply overflow-visible;
+}
+
+/*.brand-text {*/
+/*    color: var(--accent-red);*/
+/*}*/
+
+/* 1024px and up */
+@media only screen and (min-width: 1025px) {
+    .w1024 {
+        max-width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

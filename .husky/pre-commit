@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo 'Check types...'
+tsc --noEmit
+
+echo 'Check format...'
+npm run lint || (
+    echo 'eslint check failed, check list to change, then commit again';
+    false;
+)
+npm run format:check || (
+    npm run format
+    git add .
+    true;
+)
+
+
+
+echo 'Check done, Good Job.'

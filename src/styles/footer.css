@@ -1,0 +1,65 @@
+.footer {
+    @apply mt-36 p-4 text-center;
+}
+
+.footer .footer-container {
+    @apply mx-auto;
+}
+
+.footer .brand .image {
+    @apply w-14 h-14 mx-auto;
+}
+
+.footer .brand .brand-slogan .slogan {
+    @apply text-xl font-eczar font-bold text-gray-200 mt-5;
+}
+
+.footer .brand .brand-slogan .address {
+    @apply text-gray-600 text-sm;
+}
+
+.footer .menu {
+    @apply mt-10
+}
+
+.footer .menu .menu-section {
+    @apply my-5;
+}
+
+.footer .menu .menu-head {
+    @apply font-bold text-xl font-eczar;
+}
+
+.footer .menu ul li {
+    @apply my-5 mx-0 text-gray-600 text-lg;
+}
+
+.footer .copyright {
+    @apply text-center mt-5 text-xs;
+}
+
+@media only screen and (min-width: 769px) {
+    .footer .brand .image {
+        @apply w-20 h-20;
+    }
+
+    .footer .brand .brand-slogan .slogan {
+        @apply text-4xl;
+    }
+
+    .footer .brand .brand-slogan .address {
+        @apply text-xl;
+    }
+
+    .footer .menu ul {
+        @apply flex justify-center items-center gap-10;
+    }
+
+    .footer .menu .menu-head {
+        @apply text-2xl;
+    }
+
+    .footer .menu ul li {
+        @apply text-xl;
+    }
+}

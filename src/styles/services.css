@@ -1,0 +1,74 @@
+.services {
+    @apply mt-40 py-[100px] mx-4;
+}
+
+.services-container {
+    @apply flex flex-col;
+}
+
+.services .left-side {
+    @apply flex-1 flex flex-col pt-20;
+}
+
+.services .small-text {
+    @apply text-red-600 font-bold text-lg font-eczar;
+}
+
+.services .title {
+    @apply font-bold font-eczar text-[1.5rem] leading-[auto];
+}
+
+.services .title span {
+    @apply text-red-600;
+}
+
+.services .description {
+    @apply text-sm leading-[20px];
+}
+
+.services .services-list {
+    @apply mt-10 flex-1;
+}
+
+.services .explainer-container {
+    @apply mt-10;
+}
+
+.services .explainer-container .explainer {
+    @apply p-5 bg-white bg-opacity-5 rounded-lg my-5 opacity-0;
+}
+
+.services .explainer-container .number {
+    @apply font-bold font-eczar text-[20px];
+}
+
+.services .explainer-container .title {
+    @apply font-bold font-eczar text-[20px];
+}
+
+.services .explainer-container .description {
+    @apply mt-10;
+}
+
+
+@media only screen and (min-width: 769px) {
+    .services {
+        @apply mx-8;
+    }
+
+    .services-container {
+        @apply flex-row;
+    }
+
+    .services-list {
+        @apply mt-0;
+    }
+
+    .services .title {
+        @apply text-5xl leading-[60px];
+    }
+
+    .services .description {
+        @apply text-xl leading-[40px];
+    }
+}

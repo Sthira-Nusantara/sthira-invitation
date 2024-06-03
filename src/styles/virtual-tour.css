@@ -1,0 +1,43 @@
+.virtual-tour {
+    @apply mt-[150px] h-screen relative mx-4;
+}
+
+.virtual-tour .images {
+    @apply flex justify-between items-center gap-3 h-full;
+}
+
+.virtual-tour-image-item {
+    @apply rounded-3xl flex-1 relative object-cover;
+}
+
+.virtual-tour .images .image-large {
+    @apply h-[80%] virtual-tour-image-item;
+}
+
+.virtual-tour .images .image-small {
+    @apply max-[768px]:hidden min-[769px]:block h-[60%] virtual-tour-image-item;
+}
+
+.virtual-tour .images .image-preview {
+    @apply w-full object-cover h-full rounded-3xl;
+}
+
+.virtual-tour .image-opacity {
+    @apply bg-black bg-opacity-50 rounded-3xl absolute w-full h-full top-0 left-0;
+}
+
+.virtual-tour .text-showroom{
+    @apply w-full text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+}
+
+.virtual-tour .text-leading {
+    @apply font-eczar font-bold text-5xl leading-10;
+}
+
+/* Large devices (desktops, 768px and up) */
+@media only screen and (min-width: 769px) {
+    .virtual-tour .text-leading {
+        @apply text-8xl leading-[80px];
+    }
+
+}

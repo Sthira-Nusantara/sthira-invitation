@@ -1,0 +1,30 @@
+.award-container {
+    @apply relative w-full;
+}
+
+.award-background {
+    @apply absolute w-full h-full top-0 left-0 -z-10 bg-red-600 blur;
+}
+
+.award-marquee {
+    @apply my-24 py-4 items-center gap-x-3 overflow-hidden select-none;
+}
+
+.award-item {
+    @apply flex items-center gap-x-3;
+}
+
+.award-item-text {
+    @apply text-xl whitespace-nowrap italic;
+}
+
+.award-item-separator {
+    @apply text-3xl;
+}
+
+/* Large devices (desktops, 768px and up) */
+@media only screen and (min-width: 769px) {
+    .award-marquee {
+        @apply my-36;
+    }
+}
