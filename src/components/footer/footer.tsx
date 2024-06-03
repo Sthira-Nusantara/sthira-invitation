@@ -1,5 +1,4 @@
 import { SNLogoOnly } from '@/assets/icons'
-import { menuLinks } from '@/modules/home/data/menus'
 import { socialMedias } from '@/modules/home/data/social-medias'
 import Link from 'next/link'
 
@@ -14,30 +13,9 @@ const Footer = () => {
                                 <SNLogoOnly id="footer-logo" />
                             </Link>
                         </div>
-                        <div className="brand-slogan">
-                            {/*<h2 className="brand">Sthira Nusantara</h2>*/}
-                            <h3 className="slogan">Memberi Kenyamanan Baru</h3>
-                            <div className={'address'}>
-                                Mangga Dua Selatan, Sawah Besar
-                                <br />
-                                Jakarta Pusat, DKI Jakarta, Indonesia
-                                <br />
-                                10730
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div className="menu">
-                    <div className={'menu-section'}>
-                        <div className="menu-head">Lihat lainnya</div>
-                        <ul>
-                            {menuLinks.map((item, i) => (
-                                <li key={i}>
-                                    <Link href={item.link}>{item.name}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
                     <div className={'menu-section'}>
                         <div className="menu-head">Ikuti Kami</div>
                         <ul>
