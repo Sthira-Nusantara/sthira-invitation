@@ -11,8 +11,14 @@ import type { AppProps } from 'next/app'
 gsap.registerPlugin(ScrollTrigger, Flip, useGSAP)
 
 export default function App({ Component, pageProps }: AppProps) {
-    if (Component.name === 'Error') {
-        return <Component {...pageProps} />
+    if (Component.name.includes('Error')) {
+        return (
+            <AppProvider>
+                <Menu />
+
+                <Component {...pageProps} />
+            </AppProvider>
+        )
     }
 
     return (

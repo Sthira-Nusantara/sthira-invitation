@@ -42,7 +42,7 @@ export default function OnProgressBar() {
 
     return (
         <div className="w-full min-h-6 bg-red-600 top-0 left-0 bg-opacity-40 overflow-hidden">
-            <div className="h-full min-h-6 w-full py-1 px-3 bg-red-600 text-sm" ref={barRef}>
+            <div className="w-full h-full min-h-6 py-1 px-3 bg-red-600 text-sm" ref={barRef}>
                 <span className="inline-block w-full">Website On Progress</span>
             </div>
         </div>

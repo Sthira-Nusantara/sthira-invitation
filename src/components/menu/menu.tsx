@@ -52,8 +52,10 @@ const Menu = () => {
 
     return (
         <header>
-            <div className="head-menu">
+            <div className="absolute top-0 left-0 right-0 w-full">
                 <OnProgressBar />
+            </div>
+            <div className="head-menu">
                 <div className="flex justify-between items-center">
                     <div className="logo">
                         <Link href="/">
