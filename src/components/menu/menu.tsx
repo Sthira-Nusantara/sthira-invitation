@@ -4,9 +4,11 @@ import gsap from 'gsap'
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
 import OnProgressBar from '../on-progress'
+import { useApp } from '@/context/app/useContext'
 
 const Menu = () => {
     const [menuOpen, setMenuOpen] = useState(false)
+    const { user } = useApp()
 
     const tl = useMemo(() => gsap.timeline({ paused: true }), []) //timeline with useMemo
 
@@ -66,7 +68,7 @@ const Menu = () => {
                         </Link>
                     </div>
                     <div className="flex items-center">
-                        <Link href="/login">Login</Link>
+                        {user ? <Link href="/invitation">Undangan</Link> : <Link href="/login">Login</Link>}
                         <div className="btn" id="toggle-btn" onClick={toggleMenu}>
                             <div className="btn-outline btn-outline-1"></div>
                             <div className="btn-outline btn-outline-2"></div>
