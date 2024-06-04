@@ -1,7 +1,6 @@
-import Link from 'next/link'
-import Development from './components/development'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import Development from './components/development'
 
 export default function DevelopmentAnimation() {
     useGSAP(() => {
@@ -19,16 +18,14 @@ export default function DevelopmentAnimation() {
     }, [])
 
     return (
-        <div className="w-full mx-auto max-w-[600px]">
-            <Development />
-            <div>
-                <p className="text-center text-xl text-red-600 development-text">
-                    Dalam pengembangan, kembali lagi nanti
-                </p>
-                <Link href="/" className="text-center w-full inline-block text-gray-400 italic development-text">
-                    Kembali ke Beranda
-                </Link>
+        <div className="w-full">
+            <h2 className="text-3xl md:text-6xl text-red-600 text-center">COMING SOON</h2>
+            <div className="w-full mx-auto" style={{ maxWidth: 600 }}>
+                <Development />
             </div>
+            <p className="text-center text-base md:text-xl text-white">
+                Our website is under construction, Come to us later when it’s ready
+            </p>
         </div>
     )
 }

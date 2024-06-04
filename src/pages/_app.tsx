@@ -1,4 +1,3 @@
-import Footer from '@/components/footer/footer'
 import Menu from '@/components/menu/menu'
 import AppProvider from '@/context/app/provider'
 import '@/styles/globals.css'
@@ -28,7 +27,6 @@ export default function App({ Component, pageProps }: AppProps) {
             <main className="main">
                 <Component {...pageProps} />
             </main>
-            <Footer />
         </AppProvider>
     )
 }
