@@ -65,20 +65,26 @@ const Menu = () => {
                             Nusantara.
                         </Link>
                     </div>
-                    <div className="btn" id="toggle-btn" onClick={toggleMenu}>
-                        <div className="btn-outline btn-outline-1"></div>
-                        <div className="btn-outline btn-outline-2"></div>
-                        <div id="hamburger">
-                            <span className="top" />
-                            <span className="bottom" />
+                    <div className="flex items-center">
+                        <Link href="/login">Login</Link>
+                        <div className="btn" id="toggle-btn" onClick={toggleMenu}>
+                            <div className="btn-outline btn-outline-1"></div>
+                            <div className="btn-outline btn-outline-2"></div>
+                            <div id="hamburger">
+                                <span className="top" />
+                                <span className="bottom" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="menu-link">
-                <div className="w-full max-w-96 mx-auto">
-                    <Development />
+            <div className="menu-link flex items-center justify-center">
+                <div>
+                    <div className="w-full max-w-96 mx-auto">
+                        <Development />
+                    </div>
+                    <p className="text-center text-xl text-red-600">Sedang dalam pengembangan</p>
                 </div>
             </div>
         </header>
