@@ -13,14 +13,13 @@ export default function EnvelopeCard() {
 
     const isDisabled = !form.username || !form.password
 
-    const onClickLogin = () => {
+    const onClickLogin = async () => {
         try {
             if (isDisabled) {
                 throw new Error('Data tidak ditemukan')
             }
-            console.log(form.username)
 
-            const user = login(form)
+            const user = await login(form)
             setUser(user)
             alert(`Login berhasil, selamat datang ${user.name}`)
             setForm({

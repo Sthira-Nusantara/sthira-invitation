@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { InvitationData } from '@/modules/login/data/invitation-data'
+import { InvitationUserData } from '@/modules/users/types/user'
 import { createContext } from 'react'
 
 interface AppContextProps {
@@ -8,8 +8,8 @@ interface AppContextProps {
         width: number
         height: number
     }
-    user?: InvitationData
-    setUser: (user: InvitationData) => void
+    user?: InvitationUserData
+    setUser: (user: InvitationUserData) => void
 }
 
 const defaultState: AppContextProps = {
@@ -18,7 +18,7 @@ const defaultState: AppContextProps = {
         height: 0,
     },
     user: undefined,
-    setUser: (user: InvitationData) => {},
+    setUser: (user: InvitationUserData) => {},
 }
 
 export const AppContext = createContext<AppContextProps>(defaultState)

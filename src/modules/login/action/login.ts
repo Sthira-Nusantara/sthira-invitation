@@ -1,4 +1,4 @@
-import { invitationData } from '../data/invitation-data'
+import { LoginResponse } from '@/pages/api/login'
 import { setLoggedInUser } from './user'
 
 export interface LoginDto {
@@ -6,21 +6,23 @@ export interface LoginDto {
     password: string
 }
 
-export function login(dto: LoginDto) {
+export async function login(dto: LoginDto) {
     dto.username = (dto.username || '').trim()
     dto.password = (dto.password || '').trim()
 
-    const user = invitationData[dto.username]
+    const res: LoginResponse = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dto),
+    }).then(res => res.json())
 
-    if (!user) {
-        throw new Error('Data tidak ditemukan')
+    if (!res.data) {
+        throw new Error(res.error || 'Terjadi kesalahan')
     }
 
-    if (user.password !== dto.password) {
-        throw new Error('Password tidak sesuai')
-    }
+    setLoggedInUser(res.data)
 
-    setLoggedInUser(user)
-
-    return user
+    return res.data
 }

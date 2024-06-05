@@ -1,12 +1,12 @@
 import useWindowSize from '@/hooks/useWindowSize'
 import { getLoggedInUser } from '@/modules/login/action/user'
+import { InvitationUserData } from '@/modules/users/types/user'
 import { PropsWithChildren, useEffect, useState } from 'react'
 import { AppContext } from './state'
-import { InvitationData } from '@/modules/login/data/invitation-data'
 
 export default function AppProvider({ children }: PropsWithChildren) {
     const [width, height] = useWindowSize()
-    const [user, setUser] = useState<InvitationData>()
+    const [user, setUser] = useState<InvitationUserData>()
 
     useEffect(() => {
         const user = getLoggedInUser()
