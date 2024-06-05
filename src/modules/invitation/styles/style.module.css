@@ -1,0 +1,11 @@
+.bgLogo {
+    @apply absolute -z-50 w-full h-fit max-w-[30rem] xl:max-w-[36rem] opacity-5;
+}
+
+.bgLogo.left {
+    @apply -left-48 xl:-left-60 bottom-0;
+}
+
+.bgLogo.right {
+    @apply -right-56 xl:-right-72 top-0;
+}
