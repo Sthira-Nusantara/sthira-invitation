@@ -1,6 +1,10 @@
 import { useApp } from '@/context/app/useContext'
+import InvitationAddress from '@/modules/invitation/address'
 import { invitationMenus } from '@/modules/invitation/data/menus'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import FooterMenu from '@/modules/invitation/footer-menu'
+import InvitationHome from '@/modules/invitation/home'
+import InvitationTime from '@/modules/invitation/time'
+import { MenuBaseProps } from '@/modules/invitation/types/menu-base-props'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
@@ -65,6 +69,22 @@ export default function Invitation() {
         })
     }, [])
 
+    const baseProps: MenuBaseProps = {
+        menu,
+        setMenu,
+    }
+
+    const render = () => {
+        switch (menu) {
+            case 1:
+                return <InvitationTime {...baseProps} />
+            case 2:
+                return <InvitationAddress {...baseProps} />
+            default:
+                return <InvitationHome {...baseProps} />
+        }
+    }
+
     return (
         <>
             <Head>
@@ -72,23 +92,8 @@ export default function Invitation() {
             </Head>
 
             <div className="relative w-screen h-screen overflow-hidden" ref={wrapperRef}>
-                <div className="fixed bottom-4 px-4 md:bottom-12 md:px-12 left-0 right-0 overflow-hidden overflow-x-auto">
-                    <div className="w-fit h-fit rounded-lg bg-red-600 mx-auto flex p-3 gap-x-3">
-                        {invitationMenus.map((item, index) => (
-                            <div
-                                className={[
-                                    'p-4 flex items-center flex-col rounded-lg cursor-pointer min-w-24 text-sm',
-                                    index === menu ? 'bg-white text-red-600' : 'bg-transparent',
-                                ].join(' ')}
-                                onClick={() => setMenu(index)}
-                                key={'menu-inv-' + index}
-                            >
-                                <FontAwesomeIcon icon={item.icon} />
-                                <p className="whitespace-nowrap">{item.text}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                {render()}
+                <FooterMenu {...baseProps} />
             </div>
         </>
     )
