@@ -1,0 +1,82 @@
+.envelope {
+    @apply w-full max-w-[400px] mx-auto relative;
+}
+
+.envelopeTop .trapezium {
+    @apply w-full h-full box-border absolute -z-10 top-0 left-0;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+}
+
+.envelopeTop .envelopeLogo {
+    @apply w-11 h-11 mb-3 hidden;
+}
+
+.envelopeTop .wrapper {
+    @apply relative w-full h-full flex justify-between px-5 py-2;
+}
+
+.envelopeTop.open {
+    @apply absolute bottom-0 left-0 w-full h-44;
+}
+
+.envelopeTop.open .wrapper {
+    @apply items-start;
+}
+
+.envelopeTop.open .trapezium {
+    border-bottom: 11rem solid white;
+}
+
+.envelopeTop.open .floral.left {
+    @apply rotate-90 fill-red-600;
+}
+.envelopeTop.open .floral.right {
+    @apply -rotate-180 fill-red-600;
+}
+
+.envelopeTop.close {
+    @apply absolute w-full top-0 left-0 right-0 h-44;
+    z-index: 99;
+}
+
+.envelopeTop.close .floral.left {
+    @apply fill-white;
+}
+
+.envelopeTop.close .floral.right {
+    @apply -rotate-90 fill-white;
+}
+
+.envelopeTop.close .trapezium {
+    border-top: 11rem solid #850f13;
+}
+
+.envelopeTop.close .envelopeLogo {
+    @apply block;
+}
+
+.envelopeTop.close .wrapper {
+    @apply items-end;
+}
+
+.envelopeBodyTop {
+    @apply relative w-full h-12;
+    background-color: #dddddd;
+}
+
+.envelopeBodyTop .card {
+    @apply -bottom-44 hidden opacity-0 left-0 absolute w-full h-44 z-10 px-4;
+    background: #efefef;
+}
+
+.envelopeBodyTop .trapezium {
+    @apply w-full h-full box-border absolute z-20 top-0 left-0;
+    border-left: 13px solid var(--accent-red);
+    border-right: 13px solid var(--accent-red);
+    border-top: 3rem solid transparent;
+}
+
+.envelopeBody {
+    @apply w-full h-60 bg-red-600 rounded-b-lg flex justify-center items-end pb-7 z-50 relative;
+}

@@ -1,7 +1,7 @@
 import { invitationData } from '../data/invitation-data'
 import { setLoggedInUser } from './user'
 
-interface LoginDto {
+export interface LoginDto {
     username: string
     password: string
 }
