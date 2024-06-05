@@ -23,28 +23,35 @@ export default function Invitation() {
             return
         }
 
+        let startY: number
+        let timeout: NodeJS.Timeout | null = null
+
         const toggleSetMenu = (deltaY: number) => {
-            setMenu(prevMenu => {
-                let newMenu = prevMenu + (deltaY > 0 ? 1 : -1)
+            if (timeout) {
+                return
+            }
 
-                if (newMenu < 0) {
-                    newMenu = invitationMenus.length - 1
-                }
-                if (newMenu >= invitationMenus.length) {
-                    newMenu = 0
-                }
-                console.log(prevMenu, newMenu)
+            timeout = setTimeout(() => {
+                setMenu(prevMenu => {
+                    let newMenu = prevMenu + (deltaY > 0 ? 1 : -1)
 
-                return newMenu
-            })
+                    if (newMenu < 0) {
+                        newMenu = 0
+                    }
+                    if (newMenu >= invitationMenus.length) {
+                        newMenu = invitationMenus.length - 1
+                    }
+
+                    return newMenu
+                })
+                timeout = null
+            }, 300)
         }
 
         wrapperRef.current.addEventListener('wheel', event => {
             toggleSetMenu(event.deltaY)
         })
 
-        let startY: number
-        let timeout: NodeJS.Timeout | null = null
         wrapperRef.current.addEventListener('touchstart', event => {
             startY = event.touches[0].clientY
         })
@@ -53,14 +60,7 @@ export default function Invitation() {
             const endY = event.touches[0].clientY
             const deltaY = startY - endY
             if (Math.abs(deltaY) > 0) {
-                if (timeout) {
-                    return
-                }
-
-                timeout = setTimeout(() => {
-                    toggleSetMenu(deltaY)
-                    timeout = null
-                }, 500)
+                toggleSetMenu(deltaY)
             }
         })
     }, [])
