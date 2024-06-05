@@ -12,23 +12,24 @@ export default function Envelope() {
     const envelopeTL = useMemo(() => gsap.timeline({ paused: true }), [])
 
     useGSAP(() => {
-        envelopeTL.call(() => animateEnvelopeTop(), [], 0.2)
+        envelopeTL.call(() => animateEnvelopeTop(), [], 0.1)
 
         envelopeTL.to(`.${styles.card}`, {
             bottom: '3rem',
-            duration: 2,
+            duration: 1,
             display: 'block',
             opacity: 1,
             ease: 'power4.out',
+            delay: 1,
         })
         envelopeTL.to(`.${styles.card}`, { bottom: 0, zIndex: 100, duration: 0.5, ease: 'power4.out' })
     }, [])
 
     const onEnvelopeClick = () => {
         if (isOpen) {
-            envelopeTL.duration(1).reverse()
+            envelopeTL.reverse()
         } else {
-            envelopeTL.duration(envelopeTL.totalDuration()).play()
+            envelopeTL.play()
         }
         setIsOpen(!isOpen)
     }
@@ -50,7 +51,7 @@ export default function Envelope() {
         }
 
         Flip.from(envelopeState, {
-            duration: 0.2,
+            duration: 0.1,
             ease: 'power4.out',
         })
     }
