@@ -1,37 +1,19 @@
 import { SNWhiteLogoOnly } from '@/assets/icons'
-import { useApp } from '@/context/app/useContext'
 import { useState } from 'react'
-import { LoginDto, login } from '../action/login'
+import { LoginDto } from '../action/login'
 import styles from '../styles/envelope.module.css'
 
-export default function EnvelopeCard() {
-    const { setUser } = useApp()
+interface EnvelopeCardProps {
+    login: (form: LoginDto, setForm: (form: LoginDto) => void) => void
+}
+
+export default function EnvelopeCard(props: EnvelopeCardProps) {
     const [form, setForm] = useState<LoginDto>({
-        username: '',
-        password: '',
+        uxsr: '',
+        pxwd: '',
     })
 
-    const isDisabled = !form.username || !form.password
-
-    const onClickLogin = async () => {
-        try {
-            if (isDisabled) {
-                throw new Error('Data tidak ditemukan')
-            }
-
-            const user = await login(form)
-            setUser(user)
-            alert(`Login berhasil, selamat datang ${user.name}`)
-            setForm({
-                username: '',
-                password: '',
-            })
-        } catch (error) {
-            if (error instanceof Error) {
-                alert(error.message)
-            }
-        }
-    }
+    const isDisabled = !form.uxsr || !form.pxwd
 
     return (
         <div
@@ -61,32 +43,32 @@ export default function EnvelopeCard() {
                 </div>
                 <div className="space-y-1">
                     <div className="flex gap-1">
-                        <label className="text-xs font-bold text-black">Nama Pengguna</label>
+                        <label className="text-xs font-bold text-black whitespace-nowrap">Nama Pengguna</label>
                         <input
                             type="text"
-                            name="username"
+                            name="uxsr"
                             className="text-xs flex-1 shadow-sm bg-transparent p-0 pr-2 text-black focus:outline-none uppercase"
                             placeholder="__________"
-                            onChange={e => setForm({ ...form, username: e.target.value })}
-                            value={form.username}
+                            onChange={e => setForm({ ...form, uxsr: e.target.value })}
+                            value={form.uxsr}
                         />
                     </div>
                     <div className="flex gap-1">
-                        <label className="text-xs font-bold text-black">Kata Sandi</label>
+                        <label className="text-xs font-bold text-black whitespace-nowrap">Kata Sandi</label>
                         <input
-                            type="password"
-                            name="password"
+                            type="text"
+                            name="pxwd"
                             className="text-xs flex-1 shadow-sm bg-transparent p-0 pr-2 text-black focus:outline-none"
                             placeholder="______________"
-                            onChange={e => setForm({ ...form, password: e.target.value })}
-                            value={form.password}
+                            onChange={e => setForm({ ...form, pxwd: e.target.value })}
+                            value={form.pxwd}
                         />
                     </div>
                 </div>
                 <button
-                    className="text-xs bg-red-600 px-3 py-1 rounded-lg disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-white"
+                    className="text-xs bg-red-600 px-3 py-1 rounded-lg disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-white hover:bg-red-900"
                     disabled={isDisabled}
-                    onClick={() => onClickLogin()}
+                    onClick={() => !isDisabled && props.login(form, setForm)}
                 >
                     Tampilkan Undangan
                 </button>

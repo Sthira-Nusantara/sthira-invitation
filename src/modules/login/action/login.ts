@@ -2,13 +2,13 @@ import { LoginResponse } from '@/pages/api/login'
 import { setLoggedInUser } from './user'
 
 export interface LoginDto {
-    username: string
-    password: string
+    uxsr: string
+    pxwd: string
 }
 
 export async function login(dto: LoginDto) {
-    dto.username = (dto.username || '').trim()
-    dto.password = (dto.password || '').trim()
+    dto.uxsr = (dto.uxsr || '').trim()
+    dto.pxwd = (dto.pxwd || '').trim()
 
     const res: LoginResponse = await fetch('/api/login', {
         method: 'POST',

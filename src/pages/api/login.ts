@@ -1,3 +1,4 @@
+import { LoginDto } from '@/modules/login/action/login'
 import { getUsersData } from '@/modules/users/get-users'
 import { setUserLogin } from '@/modules/users/set-user-login'
 import { InvitationUserData } from '@/modules/users/types/user'
@@ -6,7 +7,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 export type LoginResponse = { data: null; error?: string } | { data: InvitationUserData }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<LoginResponse>) {
-    const { username, password } = req.body
+    const { uxsr: username, pxwd: password } = req.body as LoginDto
 
     if (!username || !password) {
         return res.json({ data: null, error: 'Data tidak ditemukan' })

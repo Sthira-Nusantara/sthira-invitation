@@ -1,7 +1,11 @@
 import { CornerFloral, SNWhiteLogoOnly } from '@/assets/icons'
 import styles from '../styles/envelope.module.css'
 
-export default function EnvelopeTop() {
+interface EnvelopeTopProps {
+    error?: string
+}
+
+export default function EnvelopeTop({ error }: EnvelopeTopProps) {
     return (
         <div className="relative w-full">
             <div className={`${styles.envelopeTop} ${styles.close}`} id="envelope-top">
@@ -11,6 +15,11 @@ export default function EnvelopeTop() {
                     <div className={styles.envelopeLogo}>
                         <SNWhiteLogoOnly />
                     </div>
+                    {error && (
+                        <div className={styles.error}>
+                            <p className="text-red-500 text-xs font-bold">{error}</p>
+                        </div>
+                    )}
                     <CornerFloral className={`${styles.floral} ${styles.right}`} />
                 </div>
             </div>
