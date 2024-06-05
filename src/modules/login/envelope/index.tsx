@@ -8,6 +8,7 @@ import { LoginDto, login } from '../action/login'
 import styles from '../styles/envelope.module.css'
 import EnvelopeCard from './card'
 import EnvelopeTop from './top'
+import { errPasswordMsg } from '@/pages/api/login'
 
 export default function Envelope() {
     const router = useRouter()
@@ -84,8 +85,6 @@ export default function Envelope() {
 
         await waitAnimation()
 
-        setForm({ uxsr: '', pxwd: '' })
-
         try {
             const user = await login(form)
             setUser(user)
@@ -101,6 +100,7 @@ export default function Envelope() {
         } catch (error) {
             if (error instanceof Error) {
                 setError(error.message)
+                setForm({ uxsr: error.message === errPasswordMsg ? form.uxsr : '', pxwd: '' })
                 await waitAnimation(500)
                 openEnvelope()
             }

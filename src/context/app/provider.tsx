@@ -24,7 +24,7 @@ export default function AppProvider({ children }: PropsWithChildren) {
                 setUser,
             }}
         >
-            {children}
+            {user !== undefined && children}
         </AppContext.Provider>
     )
 }

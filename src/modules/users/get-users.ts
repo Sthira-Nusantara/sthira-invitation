@@ -3,6 +3,11 @@ import { invitationDataRef } from './firebase'
 import { InvitationUserData } from './types/user'
 
 export const getUsersData = async (): Promise<Record<string, InvitationUserData>> => {
-    const strData = await getBytes(invitationDataRef).then(buffer => Buffer.from(buffer).toString('utf-8'))
-    return JSON.parse(strData)
+    try {
+        const strData = await getBytes(invitationDataRef).then(buffer => Buffer.from(buffer).toString('utf-8'))
+        return JSON.parse(strData)
+    } catch (error) {
+        console.error('Error getting users data', error)
+        return {}
+    }
 }

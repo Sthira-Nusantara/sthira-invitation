@@ -6,21 +6,24 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 export type LoginResponse = { data: null; error?: string } | { data: InvitationUserData }
 
+export const errNotFoundMsg = 'Data tidak ditemukan'
+export const errPasswordMsg = 'Kata sandi tidak sesuai'
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse<LoginResponse>) {
     const { uxsr: username, pxwd: password } = req.body as LoginDto
 
     if (!username || !password) {
-        return res.json({ data: null, error: 'Data tidak ditemukan' })
+        return res.json({ data: null, error: errNotFoundMsg })
     }
 
     const users = await getUsersData()
     const user = users[username]
     if (!user) {
-        return res.json({ data: null, error: 'Data tidak ditemukan' })
+        return res.json({ data: null, error: errNotFoundMsg })
     }
 
     if (user.password !== password) {
-        return res.json({ data: null, error: 'Kata sandi tidak sesuai' })
+        return res.json({ data: null, error: errPasswordMsg })
     }
 
     await setUserLogin(users, username)

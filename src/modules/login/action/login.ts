@@ -7,7 +7,7 @@ export interface LoginDto {
 }
 
 export async function login(dto: LoginDto) {
-    dto.uxsr = (dto.uxsr || '').trim()
+    dto.uxsr = (dto.uxsr || '').trim().toUpperCase()
     dto.pxwd = (dto.pxwd || '').trim()
 
     const res: LoginResponse = await fetch('/api/login', {
