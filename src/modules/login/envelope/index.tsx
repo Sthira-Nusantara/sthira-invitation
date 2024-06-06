@@ -16,6 +16,10 @@ export default function Envelope() {
 
     const [isOpen, setIsOpen] = useState(false)
     const [error, setError] = useState('')
+    const [form, setForm] = useState<LoginDto>({
+        uxsr: '',
+        pxwd: '',
+    })
 
     const envelopeTL = useMemo(() => gsap.timeline({ paused: true }), [])
 
@@ -34,12 +38,18 @@ export default function Envelope() {
     }, [])
 
     const toggleEnvelope = () => {
-        if (isOpen) {
-            envelopeTL.reverse()
-        } else {
+        if (!isOpen) {
             envelopeTL.play()
+            setIsOpen(true)
+            return
         }
-        setIsOpen(!isOpen)
+
+        if (form.pxwd || form.uxsr) {
+            return
+        }
+
+        envelopeTL.reverse()
+        setIsOpen(false)
     }
 
     const closeEnvelope = () => {
@@ -80,7 +90,7 @@ export default function Envelope() {
         })
     }
 
-    const loginAction = async (form: LoginDto, setForm: (form: LoginDto) => void) => {
+    const loginAction = async () => {
         closeEnvelope()
 
         await waitAnimation()
@@ -93,10 +103,9 @@ export default function Envelope() {
                 opacity: 0,
                 duration: 2,
                 scale: 10,
-                onComplete: () => {
-                    router.replace('/invitation', undefined, { shallow: true })
-                },
             })
+            await waitAnimation(1500)
+            router.replace('/invitation', undefined, { shallow: true })
         } catch (error) {
             if (error instanceof Error) {
                 setError(error.message)
@@ -113,7 +122,7 @@ export default function Envelope() {
                 <EnvelopeTop error={error} />
                 <div className={styles.envelopeBodyTop}>
                     <div className={styles.trapezium} />
-                    <EnvelopeCard login={loginAction} />
+                    <EnvelopeCard login={loginAction} form={form} setForm={setForm} />
                 </div>
                 <div className={styles.envelopeBody}>
                     <div className="w-fit border-b border-solid border-b-white pb-1">

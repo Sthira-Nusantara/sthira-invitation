@@ -15,7 +15,7 @@ export default function InvitationHome({}: MenuBaseProps) {
                 <p className="mt-3 text-center text-xs md:text-base">
                     Dear {user?.name}, we love to invite you to
                     <br />
-                    the grand opening of our office.
+                    the grand opening of our office
                 </p>
                 <p className="mt-3 text-center text-2xl md:text-3xl font-bold text-red-600 font-eczar">
                     PT. Sthira Nusantara

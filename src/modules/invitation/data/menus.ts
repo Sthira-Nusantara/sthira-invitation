@@ -1,5 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faClock, faHome, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faClock, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 
 export interface InvitationMenu {
     icon: IconProp
@@ -8,8 +8,8 @@ export interface InvitationMenu {
 
 export const invitationMenus: InvitationMenu[] = [
     {
-        icon: faHome,
-        text: 'Beranda',
+        icon: faEnvelope,
+        text: 'Undangan',
     },
     {
         icon: faClock,

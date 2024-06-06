@@ -66,7 +66,7 @@ export default function Invitation() {
         gsap.fromTo(
             '#invitation-menu',
             { opacity: 0, scale: 0 },
-            { scale: 1, duration: 1, opacity: 1, ease: 'circ.inOut' },
+            { scale: 1, duration: 1, opacity: 1, ease: 'circ.inOut', immediateRender: true },
         )
     }, [menu])
 
@@ -92,8 +92,8 @@ export default function Invitation() {
                 <title>Grand Opening Invitation</title>
             </Head>
 
-            <div className="relative w-screen h-screen overflow-hidden pb-28 px-8" ref={wrapperRef}>
-                <div id="invitation-menu" className="w-full h-full">
+            <div className="relative w-screen h-screen overflow-hidden" ref={wrapperRef}>
+                <div id="invitation-menu" className="w-full h-full pb-28 px-8 md:pb-36">
                     {render()}
                 </div>
                 <FooterMenu {...baseProps} />

@@ -88,7 +88,7 @@ const Menu = () => {
 
             <div className="menu-link flex items-center justify-center">
                 <div className="w-full">
-                    <h2 className="text-3xl md:text-6xl text-red-600 text-center">COMING SOON</h2>
+                    <h2 className="text-3xl md:text-6xl text-red-600 text-center font-eczar font-bold">COMING SOON</h2>
                     <div className="w-full mx-auto" style={{ maxWidth: 600 }}>
                         <Development />
                     </div>

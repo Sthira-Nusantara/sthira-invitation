@@ -3,7 +3,7 @@
 }
 
 .contact-us-container {
-    @apply h-[368px] p-8 relative;
+    @apply h-fit p-8 relative;
 }
 
 .contact-us-container .contact-background {

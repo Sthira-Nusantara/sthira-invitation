@@ -1,0 +1,40 @@
+.countdown {
+    @apply relative w-full max-w-[460px] mx-auto;
+}
+
+.countdownContainer {
+    @apply h-fit relative rounded-3xl overflow-hidden w-full p-2;
+}
+
+.countdownContainer .bg {
+    @apply absolute w-full h-full top-0 left-0 overflow-hidden -z-50 bg-red-600;
+}
+
+.glass {
+    @apply p-6 rounded-3xl w-fit h-fit flex flex-col justify-between relative;
+    /*background: rgba(18,18,18,40%);*/
+}
+
+.glass {
+    @apply relative;
+}
+
+.glass .glassBox {
+    @apply absolute top-0 left-0 backdrop-blur-md w-full h-full bg-red-600 rounded-3xl -z-10;
+    --tw-bg-opacity: 0.01;
+}
+
+@media only screen and (min-width: 769px) {
+    .countdownContainer .bg {
+        @apply rounded-[30px];
+    }
+}
+
+.countNum {
+    @apply text-3xl md:text-6xl;
+    text-shadow: 4px 4px 2px rgba(165, 23, 27, 0.6);
+}
+
+.countText {
+    @apply font-eczar text-xl md:text-3xl;
+}

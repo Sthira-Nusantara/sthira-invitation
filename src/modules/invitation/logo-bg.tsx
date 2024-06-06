@@ -52,7 +52,7 @@ export default function LogoBackground({ menu }: MenuBaseProps) {
 
     return (
         <>
-            <div className={`${styles.bgLogo} ${styles.right}`} ref={logoBg}>
+            <div className={`${styles.bgLogo} ${styles.right}`} id="invitation-logo-bg" ref={logoBg}>
                 <div className="w-full">
                     <SNWhiteLogoOnly />
                 </div>

@@ -1,18 +1,14 @@
 import { SNWhiteLogoOnly } from '@/assets/icons'
-import { useState } from 'react'
 import { LoginDto } from '../action/login'
 import styles from '../styles/envelope.module.css'
 
 interface EnvelopeCardProps {
     login: (form: LoginDto, setForm: (form: LoginDto) => void) => void
+    form: LoginDto
+    setForm: (form: LoginDto) => void
 }
 
-export default function EnvelopeCard(props: EnvelopeCardProps) {
-    const [form, setForm] = useState<LoginDto>({
-        uxsr: '',
-        pxwd: '',
-    })
-
+export default function EnvelopeCard({ form, login, setForm }: EnvelopeCardProps) {
     const isDisabled = !form.uxsr || !form.pxwd
 
     return (
@@ -62,13 +58,14 @@ export default function EnvelopeCard(props: EnvelopeCardProps) {
                             placeholder="______________"
                             onChange={e => setForm({ ...form, pxwd: e.target.value })}
                             value={form.pxwd}
+                            autoComplete="off"
                         />
                     </div>
                 </div>
                 <button
                     className="text-xs bg-red-600 px-3 py-1 rounded-lg disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-white hover:bg-red-900"
                     disabled={isDisabled}
-                    onClick={() => !isDisabled && props.login(form, setForm)}
+                    onClick={() => !isDisabled && login(form, setForm)}
                 >
                     Tampilkan Undangan
                 </button>
