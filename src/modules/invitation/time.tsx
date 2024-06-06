@@ -1,12 +1,11 @@
+import { OPENING_DATE } from '@/config/config'
+import { useGSAP } from '@gsap/react'
+import Flip from 'gsap/dist/Flip'
+import { useEffect, useState } from 'react'
+import Clock from 'react-clock'
 import Countdown from 'react-countdown'
 import TimeCountdown from './time-countdown'
 import { MenuBaseProps } from './types/menu-base-props'
-import { useEffect, useState } from 'react'
-import Clock from 'react-clock'
-import { useGSAP } from '@gsap/react'
-import Flip from 'gsap/dist/Flip'
-
-const openingDate = new Date('2024-06-07T09:30:00')
 
 export default function InvitationTime(props: MenuBaseProps) {
     const [value, setValue] = useState(new Date())
@@ -21,8 +20,9 @@ export default function InvitationTime(props: MenuBaseProps) {
 
     useGSAP(() => {
         Flip.fit('#clock', '#invitation-logo-bg', {
-            duration: 2,
+            duration: 3,
             ease: 'back',
+            rotate: 360,
         })
     }, [])
 
@@ -35,7 +35,7 @@ export default function InvitationTime(props: MenuBaseProps) {
             </div>
             <div className="container mx-auto flex flex-col items-center">
                 <Countdown
-                    date={openingDate}
+                    date={OPENING_DATE.toDate()}
                     renderer={countdownProps => <TimeCountdown {...props} {...countdownProps} />}
                 />
             </div>

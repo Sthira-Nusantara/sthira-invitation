@@ -1,10 +1,9 @@
-import { FirebaseOptions, initializeApp } from 'firebase/app'
+import { FIREBASE_CONFIG } from '@/config/config'
+import { initializeApp } from 'firebase/app'
 import { getStorage, ref } from 'firebase/storage'
 
-const firebaseConfig: FirebaseOptions = JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_CONFIG || '{}')
-
 // Initialize Firebase
-export const firebaseApp = initializeApp(firebaseConfig)
+export const firebaseApp = initializeApp(FIREBASE_CONFIG)
 
 export const firebaseStorage = getStorage(firebaseApp)
 

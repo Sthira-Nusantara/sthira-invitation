@@ -1,7 +1,8 @@
-import { useApp } from '@/context/app/useContext'
-import { MenuBaseProps } from './types/menu-base-props'
 import { SNLogoOnly } from '@/assets/icons'
+import { OPENING_DATE } from '@/config/config'
+import { useApp } from '@/context/app/useContext'
 import Link from 'next/link'
+import { MenuBaseProps } from './types/menu-base-props'
 
 export default function InvitationHome({}: MenuBaseProps) {
     const { user } = useApp()
@@ -22,17 +23,17 @@ export default function InvitationHome({}: MenuBaseProps) {
                 </p>
                 <div className="my-6 w-full">
                     <div className="flex h-32 items-center justify-evenly w-full max-w-96 mx-auto">
-                        <p className="font-eczar text-2xl">Jumat</p>
+                        <p className="font-eczar text-2xl capitalize">{OPENING_DATE.format('dddd')}</p>
                         <div className="h-3/4 border-solid bg-red-600 w-1 rounded-xl" />
                         <p className="text-center font-eczar text-2xl">
-                            05
+                            {OPENING_DATE.format('DD')}
                             <br />
-                            2024
+                            {OPENING_DATE.format('YYYY')}
                         </p>
                         <div className="h-3/4 border-solid bg-red-600 w-1 rounded-xl" />
-                        <p className="font-eczar text-2xl">Juli</p>
+                        <p className="font-eczar text-2xl capitalize">{OPENING_DATE.format('MMMM')}</p>
                     </div>
-                    <p className="text-lg text-center">At 9.30 WIB s/d Selesai</p>
+                    <p className="text-lg text-center">{OPENING_DATE.format('[Pukul] HH:mm [s/d] [Selesai]')}</p>
                 </div>
                 <div className="w-full">
                     <Link href="https://maps.app.goo.gl/7a15nx2UiPg8RrKM6" target="_blank" rel="noopener noreferrer">

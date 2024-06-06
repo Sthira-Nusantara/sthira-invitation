@@ -1,6 +1,7 @@
 import { CountdownRenderProps } from 'react-countdown'
 import styles from './styles/time.module.css'
 import { MenuBaseProps } from './types/menu-base-props'
+import { OPENING_DATE } from '@/config/config'
 
 export interface TimeCountdownProps extends CountdownRenderProps, MenuBaseProps {}
 
@@ -18,7 +19,7 @@ export default function TimeCountdown({ completed, days, hours, minutes, seconds
                 ) : (
                     <div>
                         <p className="font-eczar text-2xl md:text-5xl text-center">We Are Open In</p>
-                        <div className="flex gap-x-3 items-center justify-center my-4">
+                        <div className="flex gap-x-3 items-center justify-center my-3 md:my-6">
                             {!!days && (
                                 <p>
                                     <span className={styles.countNum}>{print2Digit(days)}</span>{' '}
@@ -41,7 +42,7 @@ export default function TimeCountdown({ completed, days, hours, minutes, seconds
                             )}
                         </div>
                         <p className="text-center text-gray-400 text-base md:text-xl">
-                            Jumat, 5 Juli 2024 pukul 09:30 WIB
+                            {OPENING_DATE.format('dddd[,] DD MMMM YYYY [pukul] HH:mm [WIB]')}
                         </p>
                     </div>
                 )}

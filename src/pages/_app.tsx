@@ -8,6 +8,10 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import type { AppProps } from 'next/app'
 import Login from './login'
 import Invitation from './invitation'
+import moment from 'moment'
+import 'moment/locale/id'
+
+moment.locale('id')
 
 gsap.registerPlugin(ScrollTrigger, Flip, useGSAP)
 
