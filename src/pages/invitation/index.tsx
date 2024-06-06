@@ -93,7 +93,7 @@ export default function Invitation() {
             </Head>
 
             <div className="relative w-screen h-screen overflow-hidden" ref={wrapperRef}>
-                <div id="invitation-menu" className="w-full h-full pb-28 px-8 md:pb-36">
+                <div id="invitation-menu" className="w-full h-full pb-28 md:pb-36">
                     {render()}
                 </div>
                 <FooterMenu {...baseProps} />
