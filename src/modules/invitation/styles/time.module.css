@@ -15,10 +15,6 @@
     /*background: rgba(18,18,18,40%);*/
 }
 
-.glass {
-    @apply relative;
-}
-
 .glass .glassBox {
     @apply absolute top-0 left-0 backdrop-blur-md w-full h-full bg-primary-dark rounded-3xl -z-10;
     --tw-bg-opacity: 0.01;

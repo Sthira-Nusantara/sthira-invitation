@@ -2,13 +2,13 @@ import { SNLogoOnly } from '@/assets/icons'
 import { OPENING_DATE } from '@/config/config'
 import { useApp } from '@/context/app/useContext'
 import Link from 'next/link'
-import { MenuBaseProps } from './types/menu-base-props'
+import { MenuBaseProps } from '../types/menu-base-props'
 
 export default function InvitationHome({}: MenuBaseProps) {
     const { user } = useApp()
 
     return (
-        <div className="w-screen h-screen overflow-hidden flex items-center justify-center">
+        <section className="w-screen h-screen overflow-hidden flex items-center justify-center invitation">
             <div className="container mx-auto flex flex-col items-center">
                 <div className="w-16 h-16 md:w-24 md:h-24">
                     <SNLogoOnly />
@@ -47,6 +47,6 @@ export default function InvitationHome({}: MenuBaseProps) {
                     </Link>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

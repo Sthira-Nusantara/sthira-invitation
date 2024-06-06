@@ -1,7 +1,7 @@
-import { CountdownRenderProps } from 'react-countdown'
-import styles from './styles/time.module.css'
-import { MenuBaseProps } from './types/menu-base-props'
 import { OPENING_DATE } from '@/config/config'
+import { CountdownRenderProps } from 'react-countdown'
+import { MenuBaseProps } from '../../types/menu-base-props'
+import styles from '../../styles/time.module.css'
 
 export interface TimeCountdownProps extends CountdownRenderProps, MenuBaseProps {}
 
