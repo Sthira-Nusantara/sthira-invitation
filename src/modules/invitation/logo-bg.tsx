@@ -1,9 +1,7 @@
-import { useGSAP } from '@gsap/react'
-import Flip from 'gsap/dist/Flip'
+import { CornerFloral } from '@/assets/icons'
 import { useRef } from 'react'
 import styles from './styles/style.module.css'
 import { MenuBaseProps } from './types/menu-base-props'
-import { CornerFloral } from '@/assets/icons'
 
 const SNWhiteLogoOnly = () => {
     return (
@@ -25,34 +23,23 @@ const SNWhiteLogoOnly = () => {
     )
 }
 
-export default function LogoBackground({ menu }: MenuBaseProps) {
+export default function LogoBackground({}: MenuBaseProps) {
     const logoBg = useRef<HTMLDivElement>(null)
-    useGSAP(() => {
-        if (!logoBg.current) {
-            return
-        }
-
-        const state = Flip.getState(logoBg.current)
-
-        if (logoBg.current.classList.contains(styles.right)) {
-            logoBg.current.classList.remove(styles.right)
-            logoBg.current.classList.add(styles.left)
-        } else {
-            logoBg.current.classList.remove(styles.left)
-            logoBg.current.classList.add(styles.right)
-        }
-
-        Flip.from(state, {
-            duration: 2,
-            ease: 'back',
-            opacity: 0.1,
-            rotate: 360,
-        })
-    }, [menu])
 
     return (
         <>
             <div className={`${styles.bgLogo} ${styles.right}`} id="invitation-logo-bg" ref={logoBg}>
+                <div className="w-full">
+                    <SNWhiteLogoOnly />
+                </div>
+            </div>
+            <div className="fixed top-0 left-0 w-16 h-16 opacity-40">
+                <CornerFloral className="fill-white rotate-90" />
+            </div>
+            <div className="fixed bottom-0 right-0 w-16 h-16 opacity-40">
+                <CornerFloral className="fill-white -rotate-90" />
+            </div>
+            <div className={`${styles.bgLogo} ${styles.left}`} id="invitation-logo-bg" ref={logoBg}>
                 <div className="w-full">
                     <SNWhiteLogoOnly />
                 </div>

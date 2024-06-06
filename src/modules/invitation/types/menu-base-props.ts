@@ -1,4 +1,3 @@
-export interface MenuBaseProps {
-    menu: number
-    setMenu: (index: number) => void
+export type MenuBaseProps = {
+    // THE PROPS
 }

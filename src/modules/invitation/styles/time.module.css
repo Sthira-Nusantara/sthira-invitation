@@ -20,7 +20,7 @@
 }
 
 .glass .glassBox {
-    @apply absolute top-0 left-0 backdrop-blur-md w-full h-full bg-red-600 rounded-3xl -z-10;
+    @apply absolute top-0 left-0 backdrop-blur-md w-full h-full bg-primary-dark rounded-3xl -z-10;
     --tw-bg-opacity: 0.01;
 }
 

@@ -1,6 +1,4 @@
 import { OPENING_DATE } from '@/config/config'
-import { useGSAP } from '@gsap/react'
-import Flip from 'gsap/dist/Flip'
 import { useEffect, useState } from 'react'
 import Clock from 'react-clock'
 import Countdown from 'react-countdown'
@@ -18,16 +16,8 @@ export default function InvitationTime(props: MenuBaseProps) {
         }
     }, [])
 
-    useGSAP(() => {
-        Flip.fit('#clock', '#invitation-logo-bg', {
-            duration: 3,
-            ease: 'back',
-            rotate: 360,
-        })
-    }, [])
-
     return (
-        <div className="w-full h-full overflow-hidden flex items-center justify-center">
+        <div className="w-screen min-h-screen overflow-hidden flex items-center justify-center">
             <div className="absolute w-full h-full -z-10 flex items-center justify-center">
                 <div className="max-w-96 h-96 w-full md:w-[36rem] md:h-[36rem]" id="clock">
                     <Clock value={value} size="100%" />
