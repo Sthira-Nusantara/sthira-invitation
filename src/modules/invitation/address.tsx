@@ -28,15 +28,17 @@ export default function InvitationAddress({}: MenuBaseProps) {
                 <div className="absolute w-full h-full z-50 top-0 left-0 flex items-center justify-center bg-black bg-opacity-40">
                     <div className={`${styles.glass}`}>
                         <div className={styles.glassBox} />
-                        <Link
-                            href="https://maps.app.goo.gl/7a15nx2UiPg8RrKM6"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-red-600 text-3xl"
-                        >
-                            Buka Map
-                        </Link>
+                        <p className="text-red-600 text-3xl">Buka Map</p>
                     </div>
+
+                    <Link
+                        className="opacity-0 inline-block w-full h-full absolute top-0 left-0"
+                        href="https://maps.app.goo.gl/7a15nx2UiPg8RrKM6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Buka Map
+                    </Link>
                 </div>
             </div>
         </div>
