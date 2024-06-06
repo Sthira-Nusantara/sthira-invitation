@@ -1,5 +1,5 @@
 .bgLogo {
-    @apply absolute -z-50 w-full h-fit max-w-[30rem] xl:max-w-[36rem] opacity-30;
+    @apply absolute -z-50 w-full h-fit max-w-[30rem] xl:max-w-[36rem] opacity-20;
 }
 
 .bgLogo.left {

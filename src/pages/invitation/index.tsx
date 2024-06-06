@@ -1,4 +1,5 @@
 import { useApp } from '@/context/app/useContext'
+import { initScrollTrigger } from '@/modules/invitation/action/init-page'
 import InvitationAddress from '@/modules/invitation/address'
 import { invitationMenus } from '@/modules/invitation/data/menus'
 import FooterMenu from '@/modules/invitation/footer-menu'
@@ -6,6 +7,8 @@ import InvitationHome from '@/modules/invitation/home'
 import LogoBackground from '@/modules/invitation/logo-bg'
 import InvitationTime from '@/modules/invitation/time'
 import { MenuBaseProps } from '@/modules/invitation/types/menu-base-props'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
@@ -28,56 +31,44 @@ export default function Invitation() {
             return
         }
 
-        let startY: number
-        let timeout: NodeJS.Timeout | null = null
+        const onScroll = (direction: 'up' | 'down') => {
+            setMenu(prevMenu => {
+                let newMenu = prevMenu + (direction === 'down' ? 1 : -1)
 
-        const toggleSetMenu = (deltaY: number) => {
-            if (timeout) {
-                return
-            }
+                if (newMenu < 0) {
+                    newMenu = invitationMenus.length - 1
+                }
+                if (newMenu >= invitationMenus.length) {
+                    newMenu = 0
+                }
 
-            timeout = setTimeout(() => {
-                setMenu(prevMenu => {
-                    let newMenu = prevMenu + (deltaY > 0 ? 1 : -1)
-
-                    if (newMenu < 0) {
-                        newMenu = 0
-                    }
-                    if (newMenu >= invitationMenus.length) {
-                        newMenu = invitationMenus.length - 1
-                    }
-
-                    return newMenu
-                })
-                timeout = null
-            }, 300)
+                return newMenu
+            })
         }
-
-        const onWheel = (event: WheelEvent) => {
-            toggleSetMenu(event.deltaY)
-        }
-        wrapperRef.current.addEventListener('wheel', onWheel)
-
-        const onTouchStart = (event: TouchEvent) => {
-            startY = event.touches[0].clientY
-        }
-        wrapperRef.current.addEventListener('touchstart', onTouchStart)
-
-        const onTouchMove = (event: TouchEvent) => {
-            const endY = event.touches[0].clientY
-            const deltaY = startY - endY
-            if (Math.abs(deltaY) > 0) {
-                toggleSetMenu(deltaY)
-            }
-        }
-        wrapperRef.current.addEventListener('touchmove', onTouchMove)
+        const removeScrollTrigger = initScrollTrigger(wrapperRef.current, onScroll)
 
         return () => {
-            wrapperRef.current?.removeEventListener('wheel', onWheel)
-            wrapperRef.current?.removeEventListener('touchstart', onTouchStart)
-            wrapperRef.current?.removeEventListener('touchmove', onTouchMove)
+            removeScrollTrigger()
         }
     }, [])
+
+    useGSAP(() => {
+        gsap.from('#invitation-footer', {
+            opacity: 0,
+            bottom: -100,
+            delay: 1,
+            duration: 1,
+            ease: 'back.inOut',
+        })
+    }, [])
+
+    useGSAP(() => {
+        gsap.fromTo(
+            '#invitation-menu',
+            { opacity: 0, scale: 0 },
+            { scale: 1, duration: 1, opacity: 1, ease: 'circ.inOut' },
+        )
+    }, [menu])
 
     const baseProps: MenuBaseProps = {
         menu,
@@ -101,8 +92,10 @@ export default function Invitation() {
                 <title>Grand Opening Invitation</title>
             </Head>
 
-            <div className="relative w-screen h-screen overflow-hidden" ref={wrapperRef}>
-                {render()}
+            <div className="relative w-screen h-screen overflow-hidden pb-28 px-8" ref={wrapperRef}>
+                <div id="invitation-menu" className="w-full h-full">
+                    {render()}
+                </div>
                 <FooterMenu {...baseProps} />
                 <LogoBackground {...baseProps} />
             </div>

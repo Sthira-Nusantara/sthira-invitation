@@ -3,6 +3,7 @@ import Flip from 'gsap/dist/Flip'
 import { useRef } from 'react'
 import styles from './styles/style.module.css'
 import { MenuBaseProps } from './types/menu-base-props'
+import { CornerFloral } from '@/assets/icons'
 
 const SNWhiteLogoOnly = () => {
     return (
@@ -55,6 +56,12 @@ export default function LogoBackground({ menu }: MenuBaseProps) {
                 <div className="w-full">
                     <SNWhiteLogoOnly />
                 </div>
+            </div>
+            <div className="fixed top-0 left-0 w-16 h-16 opacity-40">
+                <CornerFloral className="fill-white rotate-90" />
+            </div>
+            <div className="fixed bottom-0 right-0 w-16 h-16 opacity-40">
+                <CornerFloral className="fill-white -rotate-90" />
             </div>
         </>
     )

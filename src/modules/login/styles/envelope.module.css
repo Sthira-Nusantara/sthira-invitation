@@ -33,6 +33,10 @@
     @apply block;
 }
 
+.floral {
+    @apply w-8 h-8;
+}
+
 .envelopeTop.open .floral.left {
     @apply rotate-90 fill-red-600;
 }

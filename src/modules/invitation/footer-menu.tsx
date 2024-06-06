@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function FooterMenu({ menu, setMenu }: MenuBaseProps) {
     return (
-        <div className="fixed bottom-4 px-4 md:bottom-12 md:px-12 left-0 right-0 overflow-hidden overflow-x-auto">
+        <div
+            className="fixed bottom-4 px-4 md:bottom-12 md:px-12 left-0 right-0 overflow-hidden overflow-x-auto"
+            id="invitation-footer"
+        >
             <div className="w-fit h-fit rounded-lg bg-red-600 mx-auto flex p-3 gap-x-3">
                 {invitationMenus.map((item, index) => (
                     <div
