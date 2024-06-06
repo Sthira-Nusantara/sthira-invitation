@@ -10,7 +10,7 @@ export default function FooterMenu({ menu, setMenu }: MenuBaseProps) {
                 {invitationMenus.map((item, index) => (
                     <div
                         className={[
-                            'p-4 flex items-center flex-col rounded-lg cursor-pointer text-sm',
+                            'p-4 flex items-center flex-col rounded-lg cursor-pointer text-sm hover:bg-slate-300 hover:text-red-800',
                             index === menu ? 'bg-white text-red-600' : 'bg-transparent',
                         ].join(' ')}
                         onClick={() => setMenu(index)}

@@ -3,6 +3,7 @@ import InvitationAddress from '@/modules/invitation/address'
 import { invitationMenus } from '@/modules/invitation/data/menus'
 import FooterMenu from '@/modules/invitation/footer-menu'
 import InvitationHome from '@/modules/invitation/home'
+import LogoBackground from '@/modules/invitation/logo-bg'
 import InvitationTime from '@/modules/invitation/time'
 import { MenuBaseProps } from '@/modules/invitation/types/menu-base-props'
 import Head from 'next/head'
@@ -52,21 +53,30 @@ export default function Invitation() {
             }, 300)
         }
 
-        wrapperRef.current.addEventListener('wheel', event => {
+        const onWheel = (event: WheelEvent) => {
             toggleSetMenu(event.deltaY)
-        })
+        }
+        wrapperRef.current.addEventListener('wheel', onWheel)
 
-        wrapperRef.current.addEventListener('touchstart', event => {
+        const onTouchStart = (event: TouchEvent) => {
             startY = event.touches[0].clientY
-        })
+        }
+        wrapperRef.current.addEventListener('touchstart', onTouchStart)
 
-        wrapperRef.current.addEventListener('touchmove', event => {
+        const onTouchMove = (event: TouchEvent) => {
             const endY = event.touches[0].clientY
             const deltaY = startY - endY
             if (Math.abs(deltaY) > 0) {
                 toggleSetMenu(deltaY)
             }
-        })
+        }
+        wrapperRef.current.addEventListener('touchmove', onTouchMove)
+
+        return () => {
+            wrapperRef.current?.removeEventListener('wheel', onWheel)
+            wrapperRef.current?.removeEventListener('touchstart', onTouchStart)
+            wrapperRef.current?.removeEventListener('touchmove', onTouchMove)
+        }
     }, [])
 
     const baseProps: MenuBaseProps = {
@@ -94,6 +104,7 @@ export default function Invitation() {
             <div className="relative w-screen h-screen overflow-hidden" ref={wrapperRef}>
                 {render()}
                 <FooterMenu {...baseProps} />
+                <LogoBackground {...baseProps} />
             </div>
         </>
     )
