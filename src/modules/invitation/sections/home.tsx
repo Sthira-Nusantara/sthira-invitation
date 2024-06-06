@@ -8,7 +8,7 @@ export default function InvitationHome({}: MenuBaseProps) {
     const { user } = useApp()
 
     return (
-        <section className="w-screen h-screen overflow-hidden flex items-center justify-center invitation">
+        <section className="w-screen min-h-screen overflow-hidden flex items-center justify-center invitation">
             <div className="container mx-auto flex flex-col items-center">
                 <div className="w-16 h-16 md:w-24 md:h-24">
                     <SNLogoOnly />

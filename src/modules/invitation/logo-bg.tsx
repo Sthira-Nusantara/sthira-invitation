@@ -38,7 +38,7 @@ export default function LogoBackground({}: MenuBaseProps) {
                 trigger: section,
                 start: 'top top',
                 end: 'top top',
-                markers: true,
+                // markers: true,
                 onEnter: () => {
                     moveLogoBg()
                 },
