@@ -11,6 +11,10 @@ interface MarkerProps {
 
 export default function Markers({ type, map }: MarkerProps) {
     const markers = useMemo(() => {
+        if (map.markers?.length) {
+            map.markers.forEach(marker => marker.remove())
+        }
+
         const data = getMarkers(type)
 
         const mapMarkers = data.map(marker => {
@@ -28,6 +32,7 @@ export default function Markers({ type, map }: MarkerProps) {
             return {
                 parent: mark.getElement(),
                 children: marker.element,
+                marker: mark,
             }
         })
 

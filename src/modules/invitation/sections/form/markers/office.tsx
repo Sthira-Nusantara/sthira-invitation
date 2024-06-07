@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
+import { BaseMarkerProps } from '.'
 
-export default function OfficeMarker() {
+export default function OfficeMarker({}: BaseMarkerProps) {
     const markerRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {

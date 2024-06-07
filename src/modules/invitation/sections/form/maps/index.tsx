@@ -1,7 +1,6 @@
 import { MAPBOX_TOKEN } from '@/config/config'
 import mapboxgl, { Map } from 'mapbox-gl'
 import { ForwardedRef, forwardRef, useEffect, useImperativeHandle, useState } from 'react'
-import { MenuBaseProps } from '../../../types/menu-base-props'
 import { CENTER_LAT, CENTER_LONG } from '../data/coordinates'
 import Markers from './markers'
 
@@ -9,7 +8,11 @@ export interface MapInvitation extends mapboxgl.Map {
     markers?: mapboxgl.Marker[]
 }
 
-function MapsComponent({}: MenuBaseProps, ref: ForwardedRef<MapInvitation>) {
+interface MapsProp {
+    type: 'all' | 'driver' | 'non-driver' | 'office'
+}
+
+function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
     const [map, setMap] = useState<MapInvitation>()
 
     useEffect(() => {
@@ -18,9 +21,9 @@ function MapsComponent({}: MenuBaseProps, ref: ForwardedRef<MapInvitation>) {
         const map = new Map({
             container: 'map-invitation',
             center: [CENTER_LONG, CENTER_LAT],
-            style: 'mapbox://styles/mapbox/satellite-v9',
+            style: 'mapbox://styles/mapbox/satellite-streets-v12',
             zoom: 17,
-            minZoom: 17,
+            minZoom: 15.5,
             maxZoom: 20,
         })
 
@@ -46,7 +49,7 @@ function MapsComponent({}: MenuBaseProps, ref: ForwardedRef<MapInvitation>) {
     return (
         <>
             <div className="w-full h-full" id="map-invitation" />
-            {map && <Markers map={map} type="all" />}
+            {map && <Markers map={map} type={type} />}
         </>
     )
 }

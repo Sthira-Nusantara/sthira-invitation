@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
+import { BaseMarkerProps } from '.'
 
-export default function ParkWithDriverMarker() {
+export default function ParkWithDriverMarker({ isGeneral }: BaseMarkerProps) {
     const markerRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -19,9 +20,21 @@ export default function ParkWithDriverMarker() {
     }, [])
 
     return (
-        <div className="bg-green-600 p-1 rounded block absolute -left-11 mx-auto -bottom-10" ref={markerRef}>
+        <div
+            className={[
+                'bg-green-600 p-1 rounded block absolute mx-auto',
+                isGeneral ? '-bottom-10 -left-11' : '-bottom-6 -left-6',
+            ].join(' ')}
+            ref={markerRef}
+        >
             <p className="text-white text-xs whitespace-nowrap font-bold text-center">
-                Lokasi Parkir <br /> <span style={{ fontSize: '0.65rem' }}>(Menggunakan Supir)</span>
+                Lokasi Parkir
+                {isGeneral && (
+                    <>
+                        <br />
+                        <span style={{ fontSize: '0.65rem' }}>(Menggunakan Supir)</span>{' '}
+                    </>
+                )}
             </p>
         </div>
     )

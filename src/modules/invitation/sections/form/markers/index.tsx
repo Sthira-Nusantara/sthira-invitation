@@ -17,13 +17,21 @@ interface Marker {
     color: string
 }
 
+export interface BaseMarkerProps {
+    isGeneral?: boolean
+}
+
 export const getMarkers = (type: 'all' | 'driver' | 'non-driver' | 'office') => {
     const data: Marker[] = []
+
+    const baseProps: BaseMarkerProps = {
+        isGeneral: type === 'all',
+    }
 
     data.push({
         latitude: OFFICE_LAT,
         longitude: OFFICE_LONG,
-        element: <OfficeMarker />,
+        element: <OfficeMarker {...baseProps} />,
         color: '#a5171b',
     })
 
@@ -31,7 +39,7 @@ export const getMarkers = (type: 'all' | 'driver' | 'non-driver' | 'office') => 
         data.push({
             latitude: DRIVER_PARK_LAT,
             longitude: DRIVER_PARK_LONG,
-            element: <ParkWithDriverMarker />,
+            element: <ParkWithDriverMarker {...baseProps} />,
             color: '#16a34a',
         })
     }
@@ -40,7 +48,7 @@ export const getMarkers = (type: 'all' | 'driver' | 'non-driver' | 'office') => 
         data.push({
             latitude: NON_DRIVER_PARK_LAT,
             longitude: NON_DRIVER_PARK_LONG,
-            element: <ParkNonDriverMarker />,
+            element: <ParkNonDriverMarker {...baseProps} />,
             color: '#2563EB',
         })
     }
