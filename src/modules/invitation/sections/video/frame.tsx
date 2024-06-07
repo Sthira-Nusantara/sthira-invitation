@@ -1,4 +1,4 @@
-import { INVITATION_ID } from '@/config/config'
+import { INVITATION_YOUTUBE_ID } from '@/config/config'
 import { handleExitFullscreen, handleFullScreen, rotateLandscape } from '@/utils/helpers'
 import { ForwardedRef, forwardRef, useImperativeHandle, useRef } from 'react'
 import YouTubePlayer from 'youtube-player'
@@ -29,7 +29,7 @@ function VideoFrameRef({ onVideoEnded }: VideoFrameProps, ref: ForwardedRef<Vide
 
             if (!localPlayer) {
                 localPlayer = YouTubePlayer(wrapperRef.current, {
-                    videoId: INVITATION_ID,
+                    videoId: INVITATION_YOUTUBE_ID,
                     height: '100%',
                     width: '100%',
                     playerVars: {

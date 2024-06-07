@@ -13,6 +13,8 @@ export default function Invitation() {
     const wrapperRef = useRef<HTMLDivElement>(null)
     const videoRef = useRef<VideoFrameElement>(null)
 
+    return <InvitationForm />
+
     return (
         <>
             <Head>

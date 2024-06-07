@@ -53,3 +53,8 @@ export const rotateLandscape = async () => {
         // DO Nothing
     }
 }
+
+export const parseCoordinate = (coordinate: string): [number, number] => {
+    const [latitude, longitude] = coordinate.split(/,\s?/).map(parseFloat)
+    return [latitude || 0, longitude || 0]
+}
