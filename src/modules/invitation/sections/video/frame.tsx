@@ -1,9 +1,9 @@
 import { INVITATION_ID } from '@/config/config'
-import { handleExitFullscreen, handleFullScreen } from '@/utils/helpers'
+import { handleExitFullscreen, handleFullScreen, rotateLandscape } from '@/utils/helpers'
 import { ForwardedRef, forwardRef, useImperativeHandle, useRef } from 'react'
 import YouTubePlayer from 'youtube-player'
 
-type IYoutubePlayer = ReturnType<typeof YouTubePlayer>
+export type IYoutubePlayer = ReturnType<typeof YouTubePlayer>
 
 interface VideoFrameProps {
     onVideoEnded?: (player: IYoutubePlayer) => Promise<void> | void
@@ -43,9 +43,7 @@ function VideoFrameRef({ onVideoEnded }: VideoFrameProps, ref: ForwardedRef<Vide
                     // '5': 'video cued'
 
                     if (event.data === 0) {
-                        await handleExitFullscreen(document).catch(() => {
-                            // do nothing
-                        })
+                        await handleExitFullscreen(document)
                         await onVideoEnded?.(localPlayer as IYoutubePlayer)
                     }
                 })
@@ -63,7 +61,8 @@ function VideoFrameRef({ onVideoEnded }: VideoFrameProps, ref: ForwardedRef<Vide
                 await localPlayer.playVideo()
 
                 if (isFullScreen) {
-                    await handleFullScreen(iframe).catch(console.error)
+                    await handleFullScreen(iframe)
+                    await rotateLandscape()
                 }
             }
 

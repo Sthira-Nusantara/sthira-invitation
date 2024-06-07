@@ -1,32 +1,48 @@
 export const handleExitFullscreen = async (document: Document): Promise<void> => {
-    const doc = document as any
-    if (doc.exitFullscreen) {
-        return doc.exitFullscreen()
-    } else if (doc.mozCancelFullScreen) {
-        /* Firefox */
-        return doc.mozCancelFullScreen()
-    } else if (doc.webkitExitFullscreen) {
-        /* Chrome, Safari and Opera */
-        return doc.webkitExitFullscreen()
-    } else if (doc.msExitFullscreen) {
-        /* IE/Edge */
-        return doc.msExitFullscreen()
+    try {
+        const doc: any = document || {}
+        screen.orientation.unlock()
+        if (typeof doc.exitFullscreen === 'function') {
+            return await doc.exitFullscreen()
+        } else if (typeof doc.mozCancelFullScreen === 'function') {
+            /* Firefox */
+            return await doc.mozCancelFullScreen()
+        } else if (typeof doc.webkitExitFullscreen === 'function') {
+            /* Chrome, Safari and Opera */
+            return await doc.webkitExitFullscreen()
+        } else if (typeof doc.msExitFullscreen === 'function') {
+            /* IE/Edge */
+            return await doc.msExitFullscreen()
+        }
+    } catch (error) {
+        // DO NOTHING
     }
 }
 
-export const handleFullScreen = async (element: HTMLElement): Promise<void> => {
-    const el = element as any
-    if (el.requestFullscreen) {
-        return el.requestFullscreen()
-    } else if (typeof el.mozRequestFullScreen === 'function') {
-        /* Firefox */
-        return el.mozRequestFullScreen()
-    } else if (typeof el.webkitRequestFullscreen === 'function') {
-        /* Chrome, Safari and Opera */
-        return el.webkitRequestFullscreen()
-    } else if (typeof el.msRequestFullscreen === 'function') {
-        /* IE/Edge */
-        return el.msRequestFullscreen()
+export const handleFullScreen = async (document: HTMLElement): Promise<void> => {
+    try {
+        const doc: any = document || {}
+        if (typeof doc.requestFullscreen === 'function') {
+            return await doc.requestFullscreen()
+        } else if (typeof doc.mozRequestFullScreen === 'function') {
+            /* Firefox */
+            return await doc.mozRequestFullScreen()
+        } else if (typeof doc.webkitRequestFullscreen === 'function') {
+            /* Chrome, Safari and Opera */
+            return await doc.webkitRequestFullscreen()
+        } else if (typeof doc.msRequestFullscreen === 'function') {
+            /* IE/Edge */
+            return await doc.msRequestFullscreen()
+        }
+    } catch (error) {
+        // DO NOTHING
+    }
+}
+
+export const rotateLandscape = async () => {
+    const orientation: any = screen.orientation || {}
+    if (typeof orientation?.lock === 'function') {
+        await orientation.lock('landscape-primary').catch(() => 0) // 'landscape-primary' | 'landscape-secondary' | 'portrait-primary' | 'portrait-secondary'
     }
 }
 
