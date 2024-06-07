@@ -43,7 +43,9 @@ function VideoFrameRef({ onVideoEnded }: VideoFrameProps, ref: ForwardedRef<Vide
                     // '5': 'video cued'
 
                     if (event.data === 0) {
-                        await handleExitFullscreen(document).catch(console.error)
+                        await handleExitFullscreen(document).catch(() => {
+                            // do nothing
+                        })
                         await onVideoEnded?.(localPlayer as IYoutubePlayer)
                     }
                 })

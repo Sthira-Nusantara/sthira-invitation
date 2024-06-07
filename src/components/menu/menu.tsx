@@ -67,7 +67,7 @@ const Menu = () => {
                             href={user ? '/invitation' : '/login'}
                             className="hidden md:block text-lg link-invitation"
                         >
-                            Grand Opening Invitation
+                            Undangan Peresmian
                         </Link>
                         <div className="btn" id="toggle-btn" onClick={toggleMenu}>
                             <div className="btn-outline btn-outline-1"></div>
@@ -81,7 +81,7 @@ const Menu = () => {
                 </div>
                 <div className="px-4">
                     <Link href={user ? '/invitation' : '/login'} className="block md:hidden text-base link-invitation">
-                        Grand Opening Invitation
+                        Undangan Peresmian
                     </Link>
                 </div>
             </div>

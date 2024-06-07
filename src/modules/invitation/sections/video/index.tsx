@@ -12,7 +12,7 @@ export default function InvitationVideo({}: MenuBaseProps) {
             trigger: videoRef.current,
             start: 'top-=100 top',
             end: 'top-=100 top',
-            markers: true,
+            // markers: true,
             onEnter: () => {
                 videoRef.current?.playVideo?.()
             },
@@ -24,9 +24,16 @@ export default function InvitationVideo({}: MenuBaseProps) {
     }, [])
 
     return (
-        <section className="w-screen h-screen overflow-hidden flex items-center justify-center invitation py-8">
+        <section className="w-screen h-screen overflow-hidden flex items-center justify-center invitation" id="video">
             <div className="container mx-auto h-full">
-                <VideoFrame ref={videoRef} />
+                <VideoFrame
+                    ref={videoRef}
+                    onVideoEnded={async player => {
+                        console.log('ONEND')
+                        await player.mute()
+                        await player.playVideo()
+                    }}
+                />
             </div>
         </section>
     )

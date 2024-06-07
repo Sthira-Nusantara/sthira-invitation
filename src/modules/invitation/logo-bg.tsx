@@ -79,10 +79,10 @@ export default function LogoBackground({}: MenuBaseProps) {
                     <SNWhiteLogoOnly />
                 </div>
             </div>
-            <div className="fixed top-0 left-0 w-16 h-16 opacity-40">
+            <div className="fixed top-0 left-0 w-16 h-16 opacity-40 -z-10">
                 <CornerFloral className="fill-white rotate-90" />
             </div>
-            <div className="fixed bottom-0 right-0 w-16 h-16 opacity-40">
+            <div className="fixed bottom-0 right-0 w-16 h-16 opacity-40 -z-10">
                 <CornerFloral className="fill-white -rotate-90" />
             </div>
         </>

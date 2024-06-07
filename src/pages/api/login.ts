@@ -6,7 +6,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 export type LoginResponse = { data: null; error?: string } | { data: InvitationUserData }
 
-export const errNotFoundMsg = 'Data tidak ditemukan'
+export const errNotFoundMsg = 'Nama Pengguna tidak ditemukan'
 export const errPasswordMsg = 'Kata sandi tidak sesuai'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<LoginResponse>) {

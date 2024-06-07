@@ -8,15 +8,18 @@ export default function InvitationHome({}: MenuBaseProps) {
     const { user } = useApp()
 
     return (
-        <section className="w-screen min-h-screen overflow-hidden flex items-center justify-center invitation">
+        <section
+            className="w-screen min-h-screen overflow-hidden flex items-center justify-center invitation"
+            id="home"
+        >
             <div className="container mx-auto flex flex-col items-center">
                 <div className="w-16 h-16 md:w-24 md:h-24">
                     <SNLogoOnly />
                 </div>
                 <p className="mt-3 text-center text-xs md:text-sm">
-                    Dear {user?.name}, we love to invite you to
+                    Yang terhormat {user?.name}
                     <br />
-                    the grand opening of our office
+                    Kami dengan antusias mengundang Anda ke Peresmian kantor kami.
                 </p>
                 <p className="mt-3 text-center text-2xl md:text-3xl font-bold text-red-600 font-eczar">
                     PT. Sthira Nusantara

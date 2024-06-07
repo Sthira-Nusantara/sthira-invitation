@@ -5,8 +5,9 @@ export default function Login() {
     return (
         <>
             <Head>
-                <title>Grand Opening Invitation</title>
+                <title>Undangan Peresmian</title>
             </Head>
+
             <div className="w-screen h-screen overflow-hidden flex items-center justify-center px-2 relative">
                 <Envelope />
             </div>

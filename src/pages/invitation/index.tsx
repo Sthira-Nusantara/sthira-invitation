@@ -12,13 +12,13 @@ export default function Invitation() {
     return (
         <>
             <Head>
-                <title>Grand Opening Invitation</title>
+                <title>Undangan Peresmian</title>
             </Head>
 
             <div className="relative" ref={wrapperRef}>
                 <InvitationHome />
-                <InvitationForm />
                 <InvitationVideo />
+                <InvitationForm />
                 <InvitationTime />
                 <LogoBackground />
             </div>

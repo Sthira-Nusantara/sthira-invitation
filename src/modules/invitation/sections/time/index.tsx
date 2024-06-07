@@ -17,7 +17,10 @@ export default function InvitationTime(props: MenuBaseProps) {
     }, [])
 
     return (
-        <section className="w-screen min-h-screen overflow-hidden flex items-center justify-center invitation relative">
+        <section
+            className="w-screen min-h-screen overflow-hidden flex items-center justify-center invitation relative"
+            id="time"
+        >
             <div className="absolute w-full h-full -z-10 flex items-center justify-center">
                 <div className="max-w-96 h-96 w-full md:w-[36rem] md:h-[36rem]" id="clock">
                     <Clock value={value} size="100%" />
