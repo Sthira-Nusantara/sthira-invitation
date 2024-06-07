@@ -32,6 +32,9 @@ function VideoFrameRef({ onVideoEnded }: VideoFrameProps, ref: ForwardedRef<Vide
                     videoId: INVITATION_ID,
                     height: '100%',
                     width: '100%',
+                    playerVars: {
+                        controls: 1,
+                    },
                 })
 
                 localPlayer.on('stateChange', async function (event) {
@@ -57,13 +60,13 @@ function VideoFrameRef({ onVideoEnded }: VideoFrameProps, ref: ForwardedRef<Vide
 
                 const iframe = await localPlayer.getIframe()
 
-                await localPlayer.unMute()
-                await localPlayer.playVideo()
-
                 if (isFullScreen) {
                     await handleFullScreen(iframe)
                     await rotateLandscape()
                 }
+
+                await localPlayer.unMute()
+                await localPlayer.playVideo()
             }
 
             return wrapperRef.current
