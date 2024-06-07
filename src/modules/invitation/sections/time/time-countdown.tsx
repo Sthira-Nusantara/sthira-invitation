@@ -18,7 +18,7 @@ export default function TimeCountdown({ completed, days, hours, minutes, seconds
                     </div>
                 ) : (
                     <div>
-                        <p className="font-eczar text-2xl md:text-5xl text-center">We Are Open In</p>
+                        <p className="font-eczar text-xl md:text-3xl text-center">Hitung Mundur Menuju Peresmian</p>
                         <div className="flex gap-x-3 items-center justify-center my-3 md:my-6">
                             {!!days && (
                                 <p>

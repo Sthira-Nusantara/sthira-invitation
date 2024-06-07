@@ -19,7 +19,9 @@ export default function InvitationVideo({ videoRef }: InvitationVideoProps) {
                         await player.playVideo()
                         setPlayed(prevState => {
                             if (!prevState) {
-                                document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' })
+                                setTimeout(() => {
+                                    document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' })
+                                }, 1000)
                             }
                             return true
                         })

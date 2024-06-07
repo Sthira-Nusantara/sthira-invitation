@@ -17,8 +17,6 @@ export const handleExitFullscreen = async (document: Document): Promise<void> =>
             /* IE/Edge */
             await doc.msExitFullscreen()
         }
-
-        await new Promise(resolve => setTimeout(resolve, 1000))
     } catch (error) {
         // DO NOTHING
     }

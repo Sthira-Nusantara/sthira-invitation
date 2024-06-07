@@ -22,7 +22,7 @@ export default function Invitation() {
             <div className="relative h-screen overflow-hidden" ref={wrapperRef}>
                 <div className="absolute bottom-0 w-full">
                     <div
-                        className="mx-auto w-fit flex flex-col justify-center animate-bounce"
+                        className="mx-auto w-fit flex flex-col justify-center animate-bounce cursor-pointer"
                         onClick={e => {
                             wrapperRef.current?.classList.remove('h-screen', 'overflow-hidden')
 
