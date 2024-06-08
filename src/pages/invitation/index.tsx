@@ -6,12 +6,23 @@ import InvitationVideo from '@/modules/invitation/sections/video'
 import { VideoFrameElement } from '@/modules/invitation/sections/video/frame'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import Head from 'next/head'
 import { useRef } from 'react'
 
 export default function Invitation() {
     const wrapperRef = useRef<HTMLDivElement>(null)
     const videoRef = useRef<VideoFrameElement>(null)
+
+    useGSAP(() => {
+        gsap.from(wrapperRef.current, {
+            opacity: 0,
+            duration: 1,
+            ease: 'power2.out',
+            delay: 0.5,
+        })
+    }, [])
 
     return (
         <>

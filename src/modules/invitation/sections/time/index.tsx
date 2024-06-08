@@ -4,6 +4,9 @@ import Clock from 'react-clock'
 import Countdown from 'react-countdown'
 import { MenuBaseProps } from '../../types/menu-base-props'
 import TimeCountdown from './time-countdown'
+import { useGSAP } from '@gsap/react'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+import gsap from 'gsap'
 
 export default function InvitationTime(props: MenuBaseProps) {
     const [value, setValue] = useState(new Date())
@@ -14,6 +17,31 @@ export default function InvitationTime(props: MenuBaseProps) {
         return () => {
             clearInterval(interval)
         }
+    }, [])
+
+    useGSAP(() => {
+        gsap.set('section#time', { opacity: 0 })
+        gsap.set('#clock', { y: -200, opacity: 0 })
+
+        ScrollTrigger.create({
+            trigger: 'section#time',
+            start: 'top center',
+            end: 'top center',
+            onEnter: () => {
+                gsap.to('section#time', {
+                    opacity: 1,
+                    duration: 2,
+                    ease: 'power2.out',
+                })
+                gsap.to('#clock', {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    delay: 1,
+                    ease: 'back.in',
+                })
+            },
+        })
     }, [])
 
     return (
