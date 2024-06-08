@@ -21,24 +21,23 @@ export default function InvitationTime(props: MenuBaseProps) {
 
     useGSAP(() => {
         gsap.set('section#time', { opacity: 0 })
-        gsap.set('#clock', { y: -200, opacity: 0 })
+        gsap.set('#clock', { opacity: 0, scale: 0 })
 
         ScrollTrigger.create({
             trigger: 'section#time',
             start: 'top center',
             end: 'top center',
             onEnter: () => {
+                gsap.to('#clock', {
+                    opacity: 1,
+                    duration: 1.5,
+                    scale: 1,
+                    ease: 'back.in',
+                })
                 gsap.to('section#time', {
                     opacity: 1,
-                    duration: 2,
-                    ease: 'power2.out',
-                })
-                gsap.to('#clock', {
-                    y: 0,
-                    opacity: 1,
                     duration: 1,
-                    delay: 0.5,
-                    ease: 'back.in',
+                    ease: 'power2.out',
                 })
             },
         })

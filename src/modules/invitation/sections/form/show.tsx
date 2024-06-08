@@ -59,7 +59,7 @@ export default function ShowMaps({ attendance }: ShowMapsProps) {
         <div className="container mx-auto flex flex-col h-full" ref={wrapperRef}>
             {attendance === 'attend' && (
                 <div className="w-full px-4">
-                    <p className="text-center italic text-sm">Pilih jenis kendaraan yang anda pakai</p>
+                    <p className="text-center italic text-sm">Pilih jenis kendaraan yang akan anda pakai</p>
 
                     <div className="w-full md:w-1/2 mx-auto flex gap-x-2 mt-2">
                         <Button isActive={vehicleType === 'motorcycle'} onClick={() => setVehicleType('motorcycle')}>
@@ -78,10 +78,10 @@ export default function ShowMaps({ attendance }: ShowMapsProps) {
                     </p>
 
                     <div className="w-full md:w-1/2 mx-auto flex gap-x-2 mt-2">
-                        <Button isActive={vehicleType === 'driver'} onClick={() => setVehicleType('driver')}>
+                        <Button isActive={vehicleType === 'non-driver'} onClick={() => setVehicleType('non-driver')}>
                             Iya
                         </Button>
-                        <Button isActive={vehicleType === 'non-driver'} onClick={() => setVehicleType('non-driver')}>
+                        <Button isActive={vehicleType === 'driver'} onClick={() => setVehicleType('driver')}>
                             Tidak
                         </Button>
                     </div>

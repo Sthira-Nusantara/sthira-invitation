@@ -4,6 +4,7 @@ import { ForwardedRef, forwardRef, useEffect, useImperativeHandle, useState } fr
 import { CENTER_LAT, CENTER_LONG } from '../data/coordinates'
 import { MarkerType } from '../markers'
 import Markers from './markers'
+import gsap from 'gsap'
 
 export interface MapInvitation extends mapboxgl.Map {
     markers?: mapboxgl.Marker[]
@@ -17,15 +18,23 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
     const [map, setMap] = useState<MapInvitation>()
 
     useEffect(() => {
+        const wrapper = document.getElementById('map-invitation')
+        if (!wrapper) {
+            return
+        }
+
+        gsap.set(wrapper, { opacity: 0 })
+
         mapboxgl.accessToken = MAPBOX_TOKEN
 
         const map = new Map({
-            container: 'map-invitation',
+            container: wrapper,
             center: [CENTER_LONG, CENTER_LAT],
             style: 'mapbox://styles/mapbox/satellite-streets-v12',
             zoom: 17,
             minZoom: 15.5,
             maxZoom: 20,
+            dragRotate: false,
         })
 
         map.addControl(
@@ -36,21 +45,22 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
             'bottom-right',
         )
 
+        map.rotateTo(30, { duration: 0 })
+
+        map.on('load', () => {
+            gsap.to(wrapper, { opacity: 1, duration: 2 })
+        })
+
         setMap(map)
 
         const resizeObserver = new ResizeObserver(() => {
             map.resize()
         })
 
-        const wrapper = document.getElementById('map-invitation')
-        if (wrapper) {
-            resizeObserver.observe(wrapper)
-        }
+        resizeObserver.observe(wrapper)
 
         return () => {
-            if (wrapper) {
-                resizeObserver.unobserve(wrapper)
-            }
+            resizeObserver.unobserve(wrapper)
             map.remove()
         }
     }, [])

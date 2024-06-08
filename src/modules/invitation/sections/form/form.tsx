@@ -17,8 +17,8 @@ export default function AttendanceForm({ setAttendance }: AttendanceFormProps) {
 
         ScrollTrigger.create({
             trigger: 'section#form',
-            start: 'top top',
-            end: 'top top',
+            start: 'top-=50 top',
+            end: 'top-=50 top',
             // markers: true,
             onEnter: () => {
                 gsap.to(wrapperRef.current, { scale: 1, opacity: 1, duration: 2 })
