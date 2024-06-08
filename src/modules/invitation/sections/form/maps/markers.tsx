@@ -2,11 +2,11 @@ import mapboxgl from 'mapbox-gl'
 import { useMemo } from 'react'
 import { createPortal } from 'react-dom'
 import { MapInvitation } from '.'
-import { getMarkers } from '../markers'
+import { MarkerType, getMarkers } from '../markers'
 
 interface MarkerProps {
     map: MapInvitation
-    type: 'all' | 'office' | 'driver' | 'non-driver'
+    type: MarkerType
 }
 
 export default function Markers({ type, map }: MarkerProps) {

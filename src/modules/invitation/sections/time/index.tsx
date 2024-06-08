@@ -37,7 +37,7 @@ export default function InvitationTime(props: MenuBaseProps) {
                     y: 0,
                     opacity: 1,
                     duration: 1,
-                    delay: 1,
+                    delay: 0.5,
                     ease: 'back.in',
                 })
             },

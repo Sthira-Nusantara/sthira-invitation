@@ -2,6 +2,7 @@ import { MAPBOX_TOKEN } from '@/config/config'
 import mapboxgl, { Map } from 'mapbox-gl'
 import { ForwardedRef, forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import { CENTER_LAT, CENTER_LONG } from '../data/coordinates'
+import { MarkerType } from '../markers'
 import Markers from './markers'
 
 export interface MapInvitation extends mapboxgl.Map {
@@ -9,7 +10,7 @@ export interface MapInvitation extends mapboxgl.Map {
 }
 
 interface MapsProp {
-    type: 'all' | 'driver' | 'non-driver' | 'office'
+    type: MarkerType
 }
 
 function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
@@ -36,6 +37,22 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
         )
 
         setMap(map)
+
+        const resizeObserver = new ResizeObserver(() => {
+            map.resize()
+        })
+
+        const wrapper = document.getElementById('map-invitation')
+        if (wrapper) {
+            resizeObserver.observe(wrapper)
+        }
+
+        return () => {
+            if (wrapper) {
+                resizeObserver.unobserve(wrapper)
+            }
+            map.remove()
+        }
     }, [])
 
     useImperativeHandle(
