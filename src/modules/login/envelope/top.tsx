@@ -13,11 +13,13 @@ export default function EnvelopeTop({ error, isLoading }: EnvelopeTopProps) {
                 <div className={styles.wrapper}>
                     <div className={styles.trapezium} />
                     <CornerFloral className={`${styles.floral} ${styles.left}`} />
-                    {isLoading ? (
-                        <div className="flex items-center gap-x-1 mb-3">
+
+                    <div className={styles.envelopeLogo}>
+                        <SNWhiteLogoOnly />
+                        {isLoading && (
                             <svg
                                 aria-hidden="true"
-                                className="w-4 h-4 text-gray-400 animate-spin fill-white"
+                                className="w-full h-full text-transparent animate-spin fill-white absolute top-0 left-0 z-10"
                                 viewBox="0 0 100 101"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -31,13 +33,8 @@ export default function EnvelopeTop({ error, isLoading }: EnvelopeTopProps) {
                                     fill="currentFill"
                                 />
                             </svg>
-                            <p className="text-sm">Processing...</p>
-                        </div>
-                    ) : (
-                        <div className={styles.envelopeLogo}>
-                            <SNWhiteLogoOnly />
-                        </div>
-                    )}
+                        )}
+                    </div>
 
                     {error && (
                         <div className={styles.error}>

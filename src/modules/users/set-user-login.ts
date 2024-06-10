@@ -1,9 +1,11 @@
 import { uploadString } from 'firebase/storage'
-import { InvitationUserData } from './types/user'
 import { invitationDataRef } from './firebase'
+import { getUsersData } from './get-users'
 
-export const setUserLogin = async (data: Record<string, InvitationUserData>, username: string) => {
+export const setUserLogin = async (username: string) => {
+    const data = await getUsersData()
     const userData = data[username]
+
     if (!userData) {
         return
     }
