@@ -33,7 +33,7 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
             style: 'mapbox://styles/mapbox/satellite-streets-v12',
             zoom: 17,
             minZoom: 15.5,
-            maxZoom: 20,
+            maxZoom: 19,
             dragRotate: false,
         })
 
@@ -45,7 +45,7 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
             'bottom-right',
         )
 
-        map.rotateTo(30, { duration: 0 })
+        map.rotateTo(35, { duration: 0 })
 
         map.on('load', () => {
             gsap.to(wrapper, { opacity: 1, duration: 2 })

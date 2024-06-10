@@ -35,6 +35,13 @@ export default function Envelope() {
             delay: 1,
         })
         envelopeTL.to(`.${styles.card}`, { bottom: 0, zIndex: 100, duration: 0.5, ease: 'power4.out' })
+
+        gsap.from(`.${styles.envelope}`, {
+            opacity: 0,
+            duration: 1,
+            scale: 0.3,
+            ease: 'power2.out',
+        })
     }, [])
 
     const toggleEnvelope = () => {
@@ -104,6 +111,10 @@ export default function Envelope() {
                 duration: 2,
                 scale: 10,
             })
+            gsap.to(`.bg-img`, {
+                opacity: 0,
+                duration: 2,
+            })
             await waitAnimation(1500)
             router.replace('/invitation', undefined, { shallow: true })
         } catch (error) {
@@ -117,19 +128,17 @@ export default function Envelope() {
     }
 
     return (
-        <>
-            <div className={styles.envelope} onClick={() => toggleEnvelope()}>
-                <EnvelopeTop error={error} />
-                <div className={styles.envelopeBodyTop}>
-                    <div className={styles.trapezium} />
-                    <EnvelopeCard login={loginAction} form={form} setForm={setForm} />
-                </div>
-                <div className={styles.envelopeBody}>
-                    <div className="w-fit border-b border-solid border-b-white pb-1">
-                        <p className="text-sm font-eczar font-bold">Sthira Nusantara</p>
-                    </div>
+        <div className={styles.envelope} onClick={() => toggleEnvelope()}>
+            <EnvelopeTop error={error} />
+            <div className={styles.envelopeBodyTop}>
+                <div className={styles.trapezium} />
+                <EnvelopeCard login={loginAction} form={form} setForm={setForm} />
+            </div>
+            <div className={styles.envelopeBody}>
+                <div className="w-fit border-b border-solid border-b-white pb-1">
+                    <p className="text-sm font-eczar font-bold">Sthira Nusantara</p>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

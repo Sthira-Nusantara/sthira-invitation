@@ -22,7 +22,7 @@ function MapsAttendance({ vehicleType }: { vehicleType: MarkerType }) {
             <div className="w-full">
                 <p className="text-xs text-gray-400 flex gap-x-1">
                     <span className="text-red-600">*</span>
-                    <span>Klik pada marker untuk melihat detail lokasi acara</span>
+                    <span>Klik pada marker untuk melihat detail lokasi</span>
                 </p>
                 <p className="text-xs text-gray-400 flex gap-x-1">
                     <span className="text-red-600">*</span>

@@ -23,7 +23,7 @@ export default function ParkMotorcycleMarker({ isGeneral }: BaseMarkerProps) {
         <div
             className={[
                 'bg-yellow-600 p-1 rounded block absolute mx-auto',
-                isGeneral ? '-bottom-0 -left-[5.3rem]' : '-bottom-6 -left-8',
+                isGeneral ? '-bottom-0 -left-[5.3rem]' : '-bottom-6 -left-6',
             ].join(' ')}
             ref={markerRef}
         >
