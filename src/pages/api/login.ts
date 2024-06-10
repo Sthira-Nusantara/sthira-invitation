@@ -26,7 +26,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         return res.json({ data: null, error: errPasswordMsg })
     }
 
-    await setUserLogin(users, username)
+    setUserLogin(users, username).catch(err => {
+        console.error('Failed to set user login', err)
+    })
 
     return res.json({ data: user })
 }

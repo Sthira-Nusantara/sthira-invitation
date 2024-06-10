@@ -15,6 +15,7 @@ export default function Envelope() {
     const { setUser } = useApp()
 
     const [isOpen, setIsOpen] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
     const [form, setForm] = useState<LoginDto>({
         uxsr: '',
@@ -45,6 +46,8 @@ export default function Envelope() {
     }, [])
 
     const toggleEnvelope = () => {
+        if (isLoading) return
+
         if (!isOpen) {
             envelopeTL.play()
             setIsOpen(true)
@@ -103,8 +106,12 @@ export default function Envelope() {
         await waitAnimation()
 
         try {
+            setIsLoading(true)
+
             const user = await login(form)
             setUser(user)
+
+            setIsLoading(false)
 
             gsap.to(`.${styles.envelope}`, {
                 opacity: 0,
@@ -115,9 +122,11 @@ export default function Envelope() {
                 opacity: 0,
                 duration: 2,
             })
+
             await waitAnimation(1500)
             router.replace('/invitation', undefined, { shallow: true })
         } catch (error) {
+            setIsLoading(false)
             if (error instanceof Error) {
                 setError(error.message)
                 setForm({ uxsr: error.message === errPasswordMsg ? form.uxsr : '', pxwd: '' })
@@ -129,7 +138,7 @@ export default function Envelope() {
 
     return (
         <div className={styles.envelope} onClick={() => toggleEnvelope()}>
-            <EnvelopeTop error={error} />
+            <EnvelopeTop error={error} isLoading={isLoading} />
             <div className={styles.envelopeBodyTop}>
                 <div className={styles.trapezium} />
                 <EnvelopeCard login={loginAction} form={form} setForm={setForm} />
