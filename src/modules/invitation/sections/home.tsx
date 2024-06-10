@@ -19,7 +19,7 @@ export default function InvitationHome({}: MenuBaseProps) {
                     <SNLogoOnly />
                 </div>
                 <p className="mt-3 text-center text-xs md:text-sm">
-                    Yang terhormat <span className="font-bold">{user?.name}</span>
+                    Yang terhormat, <span className="font-bold">{user?.name}</span>
                     <br />
                     Kami dengan antusias mengundang Anda ke Peresmian kantor kami
                 </p>
@@ -27,16 +27,20 @@ export default function InvitationHome({}: MenuBaseProps) {
                     PT. STHIRA NUSANTARA
                 </p>
                 <div className="my-6 w-full">
-                    <div className="flex h-32 items-center justify-evenly w-full max-w-96 mx-auto">
-                        <p className="font-eczar text-2xl capitalize">{OPENING_DATE.format('dddd')}</p>
-                        <div className="h-3/4 border-solid bg-red-600 w-1 rounded-xl" />
-                        <p className="text-center font-eczar text-2xl">
+                    <div className="flex h-32 items-center justify-center w-full max-w-96 mx-auto">
+                        <p className="font-eczar text-2xl capitalize flex-1 text-center">
+                            {OPENING_DATE.format('dddd')}
+                        </p>
+                        <div className="h-3/4 border-solid bg-red-600 w-1 rounded-xl mx-8" />
+                        <p className="text-center font-eczar text-2xl flex-1">
                             {OPENING_DATE.format('DD')}
                             <br />
                             {OPENING_DATE.format('YYYY')}
                         </p>
-                        <div className="h-3/4 border-solid bg-red-600 w-1 rounded-xl" />
-                        <p className="font-eczar text-2xl capitalize">{OPENING_DATE.format('MMMM')}</p>
+                        <div className="h-3/4 border-solid bg-red-600 w-1 rounded-xl mx-8" />
+                        <p className="font-eczar text-2xl capitalize flex-1 text-center">
+                            {OPENING_DATE.format('MMMM')}
+                        </p>
                     </div>
                     <div className="w-fit mx-auto my-2">
                         <FontAwesomeIcon icon={faClock} className="text-xl text-center" />
