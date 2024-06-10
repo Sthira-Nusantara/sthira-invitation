@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('../../node_modules/slick-carousel/slick/slick.css');
-@import url('../../node_modules/slick-carousel/slick/slick-theme.css');
-@import url('../../node_modules/react-clock/dist/Clock.css');
-@import url('../../node_modules/mapbox-gl/dist/mapbox-gl.css');
+
+@import '../../node_modules/slick-carousel/slick/slick.css';
+@import '../../node_modules/slick-carousel/slick/slick-theme.css';
+@import '../../node_modules/react-clock/dist/Clock.css';
+@import '../../node_modules/mapbox-gl/dist/mapbox-gl.css';
+@import './menu.css';
+@import './hero.css';
+@import './award.css';
+@import './virtual-tour.css';
+@import './services.css';
+@import './contact-us.css';
 
 @tailwind base;
 @tailwind components;
@@ -86,18 +93,6 @@ body {
     z-index: 0;
 }
 
-@import url('./menu.css');
-
-@import url('./hero.css');
-
-@import url('./award.css');
-
-@import url('./virtual-tour.css');
-
-@import url('./services.css');
-
-@import url('./contact-us.css');
-
 /*!* Start Index Content *!*/
 /*.content {*/
 /*}*/
@@ -132,23 +127,23 @@ body {
 }
 
 .react-clock {
-    @apply bg-transparent rounded-full;
+    @apply !bg-transparent !rounded-full;
 }
 
 .react-clock__face {
-    border: none;
+    @apply !border-none;
 }
 
 .react-clock__hand__body {
-    @apply bg-white;
+    @apply !bg-white;
 }
 
 .react-clock__second-hand__body {
-    @apply bg-red-600;
+    @apply !bg-red-600;
 }
 
 .react-clock__mark__body {
-    @apply bg-gray-400;
+    @apply !bg-gray-400;
 }
 
 .mapboxgl-marker {
