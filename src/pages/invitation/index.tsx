@@ -50,7 +50,7 @@ export default function Invitation() {
                         }}
                     >
                         <p className="text-center text-xs md:text-base text-white">Lihat Selengkapnya</p>
-                        <FontAwesomeIcon icon={faArrowDown} className="text-3xl text-red-600" />
+                        <FontAwesomeIcon icon={faArrowDown} className="text-3xl text-red-600 h-8" />
                     </div>
                 </div>
                 <InvitationHome />
