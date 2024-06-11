@@ -47,6 +47,6 @@ export async function login(dto: LoginDto) {
 
         return user
     } catch (error) {
-        throw new Error((error as any)?.name || 'Terjadi kesalahan')
+        throw new Error((error as any)?.message || 'Terjadi kesalahan')
     }
 }
