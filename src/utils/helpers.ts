@@ -59,9 +59,11 @@ export const parseCoordinate = (coordinate: string): [number, number] => {
     return [latitude || 0, longitude || 0]
 }
 
-export const downloadFile = (url: string, filename: string) => {
+export const downloadFile = (pathName: string, filename: string) => {
     const a = document.createElement('a')
-    a.href = url
+    const url = new URL(location.href)
+    url.pathname = pathName
+    a.href = url.toString()
     a.download = filename
     a.click()
     a.remove()
