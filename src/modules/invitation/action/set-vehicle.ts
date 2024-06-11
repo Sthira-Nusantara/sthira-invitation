@@ -35,8 +35,6 @@ export async function setUserVehicle(dto: SetVehicleDto) {
 
         await setVehicle(username, vehicle as any)
 
-        console.log('SET TO')
-
         return true
     } catch (error) {
         console.log('SET TO ERROR', error)

@@ -1,10 +1,10 @@
 import { MAPBOX_TOKEN } from '@/config/config'
+import gsap from 'gsap'
 import mapboxgl, { Map } from 'mapbox-gl'
 import { ForwardedRef, forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import { CENTER_LAT, CENTER_LONG } from '../data/coordinates'
 import { MarkerType } from '../markers'
 import Markers from './markers'
-import gsap from 'gsap'
 import { renderRoute } from './route'
 
 export interface MapInvitation extends mapboxgl.Map {
@@ -87,9 +87,7 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
 
     return (
         <>
-            <div className="w-full h-full" id="map-invitation">
-                <div className="w-9 h-9 bg-red-500"></div>
-            </div>
+            <div className="w-full h-full" id="map-invitation" />
             {map && <Markers map={map} type={type} />}
         </>
     )
