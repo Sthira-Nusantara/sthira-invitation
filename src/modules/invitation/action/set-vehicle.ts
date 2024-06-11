@@ -1,4 +1,5 @@
 import { setUserVehicle as setVehicle } from '@/modules/users/set-user'
+import { errNotFoundMsg } from '@/pages/api/login'
 
 export interface SetVehicleDto {
     uxsr: string
@@ -30,14 +31,13 @@ export async function setUserVehicle(dto: SetVehicleDto) {
         const vehicle = (dto.vehicle || '').trim()
 
         if (!username || !vehicle) {
-            throw new Error('Nama Pengguna tidak ditemukan')
+            throw new Error(errNotFoundMsg)
         }
 
         await setVehicle(username, vehicle as any)
 
         return true
     } catch (error) {
-        console.log('SET TO ERROR', error)
         throw new Error((error as any)?.message || 'Terjadi kesalahan')
     }
 }

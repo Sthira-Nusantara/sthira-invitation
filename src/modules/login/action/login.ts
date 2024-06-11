@@ -1,4 +1,5 @@
 import { getUserData } from '@/modules/users/get-users'
+import { errNotFoundMsg, errPasswordMsg } from '@/pages/api/login'
 
 export interface LoginDto {
     uxsr: string
@@ -32,20 +33,20 @@ export async function login(dto: LoginDto) {
         const password = (dto.pxwd || '').trim()
 
         if (!username || !password) {
-            throw new Error('Nama Pengguna tidak ditemukan')
+            throw new Error(errNotFoundMsg)
         }
 
         const user = await getUserData(username)
         if (!user) {
-            throw new Error('Nama Pengguna tidak ditemukan')
+            throw new Error(errNotFoundMsg)
         }
 
         if (user.password !== password) {
-            throw new Error('Kata sandi tidak sesuai')
+            throw new Error(errPasswordMsg)
         }
 
         return user
     } catch (error) {
-        throw new Error('Terjadi kesalahan')
+        throw new Error((error as any)?.name || 'Terjadi kesalahan')
     }
 }
