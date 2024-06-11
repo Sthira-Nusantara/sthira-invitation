@@ -14,7 +14,7 @@ export default function InvitationHome({}: MenuBaseProps) {
             className="w-screen min-h-screen overflow-hidden flex items-center justify-center invitation"
             id="home"
         >
-            <div className="container mx-auto flex flex-col items-center px-3">
+            <div className="container mx-auto flex flex-col items-center px-3 pb-6">
                 <div className="w-16 h-16 md:w-24 md:h-24">
                     <SNLogoOnly />
                 </div>
@@ -42,13 +42,13 @@ export default function InvitationHome({}: MenuBaseProps) {
                             {OPENING_DATE.format('MMMM')}
                         </p>
                     </div>
-                    <div className="w-fit mx-auto my-2">
+                    <div className="w-5 mx-auto my-2">
                         <FontAwesomeIcon icon={faClock} className="text-xl text-center" />
                     </div>
                     <p className="text-lg text-center">{OPENING_DATE.format('[Pukul] HH:mm [s/d] [Selesai]')}</p>
                 </div>
                 <div className="w-full">
-                    <div className="w-fit mx-auto mb-2">
+                    <div className="w-5 mx-auto mb-2">
                         <FontAwesomeIcon icon={faLocationDot} className="text-xl text-center" />
                     </div>
                     <Link

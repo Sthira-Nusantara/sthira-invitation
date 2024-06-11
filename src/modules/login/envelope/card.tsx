@@ -27,7 +27,7 @@ export default function EnvelopeCard({ form, login, setForm }: EnvelopeCardProps
                                 Terimakasih telah membuka undangan ini
                             </p>
                             <p className="text-gray-500 text-xs">
-                                Silahkan Masukan nama pengguna dan kata sandi yang telah diberikan
+                                Silahkan masukkan nama pengguna dan kata sandi yang telah diberikan
                             </p>
                         </div>
                     </div>
