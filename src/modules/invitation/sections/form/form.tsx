@@ -55,7 +55,9 @@ export default function AttendanceForm({ setVehicle }: AttendanceFormProps) {
     const notAttend = () => {
         setVehicle('all')
         if (user) {
-            setUserVehicle({ uxsr: user.name, vehicle: 'not-attend' })
+            setUserVehicle({ uxsr: user.name, vehicle: 'not-attend' }).catch(() => {
+                console.error('ERROR When update user vehicle')
+            })
         }
     }
 
@@ -80,7 +82,9 @@ export default function AttendanceForm({ setVehicle }: AttendanceFormProps) {
         }
 
         if (user) {
-            setUserVehicle({ uxsr: user.name, vehicle: vehicleType })
+            setUserVehicle({ uxsr: user.name, vehicle: vehicleType }).catch(() => {
+                console.error('ERROR When update user vehicle')
+            })
         }
 
         setIsLoading(false)
