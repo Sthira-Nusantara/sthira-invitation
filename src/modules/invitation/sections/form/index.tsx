@@ -1,18 +1,14 @@
 import { useState } from 'react'
 import AttendanceForm from './form'
+import { MarkerType } from './markers'
 import ShowMaps from './show'
-import { TypeAttendance } from './types/attend'
 
 export default function InvitationForm() {
-    const [attendance, setAttendance] = useState<TypeAttendance>()
+    const [vehicle, setVehicle] = useState<MarkerType>()
 
     return (
         <section className="w-screen h-screen overflow-hidden invitation py-8" id="form">
-            {attendance ? (
-                <ShowMaps attendance={attendance} setAttendance={setAttendance} />
-            ) : (
-                <AttendanceForm attendance={attendance} setAttendance={setAttendance} />
-            )}
+            {vehicle ? <ShowMaps vehicle={vehicle} /> : <AttendanceForm vehicle={vehicle} setVehicle={setVehicle} />}
         </section>
     )
 }

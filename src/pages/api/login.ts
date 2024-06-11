@@ -1,6 +1,5 @@
 import { LoginDto } from '@/modules/login/action/login'
 import { getUserData } from '@/modules/users/get-users'
-import { setUserLogin } from '@/modules/users/set-user-login'
 import { InvitationUserData } from '@/modules/users/types/user'
 import { NextApiRequest, NextApiResponse } from 'next'
 
@@ -25,10 +24,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         if (user.password !== password) {
             return res.json({ data: null, error: errPasswordMsg })
         }
-
-        setUserLogin(username).catch(err => {
-            console.error('Failed to set user login', err)
-        })
 
         return res.json({ data: user })
     } catch (error) {

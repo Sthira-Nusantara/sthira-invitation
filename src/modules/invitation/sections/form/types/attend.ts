@@ -1,1 +1,1 @@
-export type TypeAttendance = 'attend' | 'not-attend'
+export type TypeAttendance = 'not-attend' | 'motorcycle' | 'car-non-driver' | 'car-driver'

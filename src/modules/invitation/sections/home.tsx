@@ -22,7 +22,7 @@ export default function InvitationHome({}: MenuBaseProps) {
                 <p className="mt-3 text-center text-xs md:text-sm">
                     Yang terhormat, <span className="font-bold">{user?.name}</span>
                     <br />
-                    Kami dengan antusias mengundang Bapak / Ibu ke Peresmian kantor kami
+                    Kami dengan antusias mengundang Bapak/Ibu ke Peresmian kantor kami
                 </p>
                 <div className="mt-6">
                     <Image

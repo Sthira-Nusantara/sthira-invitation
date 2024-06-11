@@ -1,13 +1,11 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { PropsWithChildren, useRef, useState } from 'react'
+import { useRef } from 'react'
 import Maps from './maps'
 import { MarkerType } from './markers'
-import { TypeAttendance } from './types/attend'
 
 export interface ShowMapsProps {
-    attendance: TypeAttendance
-    setAttendance: (attendance: TypeAttendance) => void
+    vehicle: MarkerType
 }
 
 function MapsAttendance({ vehicleType }: { vehicleType: MarkerType }) {
@@ -32,62 +30,16 @@ function MapsAttendance({ vehicleType }: { vehicleType: MarkerType }) {
         </div>
     )
 }
-
-function Button({ isActive, children, onClick }: PropsWithChildren<{ isActive: boolean; onClick: () => void }>) {
-    return (
-        <button
-            className={`w-1/2 px-3 py-1 ${isActive ? 'bg-red-600' : 'bg-gray-400 hover:bg-gray-500'} text-white rounded-full mx-auto`}
-            onClick={onClick}
-        >
-            {children}
-        </button>
-    )
-}
-
-export default function ShowMaps({ attendance }: ShowMapsProps) {
-    const [vehicleType, setVehicleType] = useState<MarkerType | 'car'>()
+export default function ShowMaps({ vehicle }: ShowMapsProps) {
     const wrapperRef = useRef<HTMLDivElement>(null)
 
     useGSAP(() => {
         gsap.from(wrapperRef.current, { opacity: 0, duration: 2 })
     }, [])
 
-    const isCar = !!vehicleType && vehicleType !== 'motorcycle'
-    const renderMap = (attendance === 'not-attend' && vehicleType !== 'car') || (vehicleType && vehicleType !== 'car')
-
     return (
         <div className="container mx-auto flex flex-col h-full" ref={wrapperRef}>
-            {attendance === 'attend' && (
-                <div className="w-full px-4">
-                    <p className="text-center italic text-sm">Pilih jenis kendaraan yang akan anda pakai</p>
-
-                    <div className="w-full md:w-1/2 mx-auto flex gap-x-2 mt-2">
-                        <Button isActive={vehicleType === 'motorcycle'} onClick={() => setVehicleType('motorcycle')}>
-                            Motor
-                        </Button>
-                        <Button isActive={isCar} onClick={() => setVehicleType('car')}>
-                            Mobil
-                        </Button>
-                    </div>
-                </div>
-            )}
-            {isCar && (
-                <div className="w-full px-4 mt-2">
-                    <p className="text-center italic text-sm">
-                        Apakah Bapak / Ibu mengendarai kendaraan <br className="md:hidden" /> sendiri (tanpa supir)?
-                    </p>
-
-                    <div className="w-full md:w-1/2 mx-auto flex gap-x-2 mt-2">
-                        <Button isActive={vehicleType === 'non-driver'} onClick={() => setVehicleType('non-driver')}>
-                            Iya
-                        </Button>
-                        <Button isActive={vehicleType === 'driver'} onClick={() => setVehicleType('driver')}>
-                            Tidak
-                        </Button>
-                    </div>
-                </div>
-            )}
-            {renderMap && <MapsAttendance vehicleType={vehicleType || 'all'} />}
+            <MapsAttendance vehicleType={vehicle} />
         </div>
     )
 }

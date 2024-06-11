@@ -4,4 +4,5 @@ export interface InvitationUserData {
     password: string
     notes?: string
     lastLoggedIn?: Date
+    vehicle?: ('driver' | 'non-driver' | 'motorcycle' | 'not-attend')[]
 }

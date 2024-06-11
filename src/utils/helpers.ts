@@ -58,3 +58,11 @@ export const parseCoordinate = (coordinate: string): [number, number] => {
     const [latitude, longitude] = coordinate.split(/,\s?/).map(parseFloat)
     return [latitude || 0, longitude || 0]
 }
+
+export const downloadFile = (url: string, filename: string) => {
+    const a = document.createElement('a')
+    a.href = url
+    a.download = filename
+    a.click()
+    a.remove()
+}
