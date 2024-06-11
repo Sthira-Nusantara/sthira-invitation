@@ -26,9 +26,9 @@ const Contact = () => {
                                 <span>Bekerja Sama</span> Dengan Kami
                             </h2>
                             <p className={styles.wording}>
-                                Hai! Senang Anda ingin menghubungi kami. Baik sebagai calon klien atau sekadar ingin
-                                tahu tentang kami, kami siap berkolaborasi untuk menciptakan ruangan dingin yang nyaman
-                                untuk Anda.
+                                Hai! Senang Bapak / Ibu ingin menghubungi kami. Baik sebagai calon klien atau sekadar
+                                ingin tahu tentang kami, kami siap berkolaborasi untuk menciptakan ruangan dingin yang
+                                nyaman untuk Bapak / Ibu.
                             </p>
                             <div className={styles.detail}>
                                 <div className={styles.contactUs}>

@@ -81,7 +81,7 @@ body {
 }
 
 .main {
-    @apply mt-[200px];
+    @apply mt-12 md:mt-24;
 }
 
 .overlay {

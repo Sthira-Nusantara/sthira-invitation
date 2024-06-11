@@ -30,7 +30,7 @@ export default function AttendanceForm({ setAttendance }: AttendanceFormProps) {
         <div className="container mx-auto h-full flex items-center flex-col justify-center px-3" ref={wrapperRef}>
             <div className="w-full max-w-96 h-96 bg-red-600 rounded-tr-3xl rounded-bl-3xl flex flex-col">
                 <div className="flex-1 flex justify-center items-center px-3">
-                    <p className="text-2xl text-center">Apakah Anda berkesempatan hadir di acara kami?</p>
+                    <p className="text-2xl text-center">Apakah Bapak / Ibu berkesempatan hadir di acara kami?</p>
                 </div>
                 <div className="w-full flex justify-end items-end">
                     <button

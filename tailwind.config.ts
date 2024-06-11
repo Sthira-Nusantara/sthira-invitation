@@ -21,10 +21,12 @@ const config: Config = {
                 red: {
                     600: '#a5171b',
                 },
+                blue: {
+                    300: '#0097E0',
+                },
                 gray: {
                     200: '#D9D9D9',
                     600: '#656565',
-
                 },
                 'primary-dark': '#121212',
             },

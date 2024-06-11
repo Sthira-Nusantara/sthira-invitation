@@ -74,7 +74,7 @@ export default function ShowMaps({ attendance }: ShowMapsProps) {
             {isCar && (
                 <div className="w-full px-4 mt-2">
                     <p className="text-center italic text-sm">
-                        Apakah Anda mengendarai kendaraan <br className="md:hidden" /> sendiri (tanpa supir)?
+                        Apakah Bapak / Ibu mengendarai kendaraan <br className="md:hidden" /> sendiri (tanpa supir)?
                     </p>
 
                     <div className="w-full md:w-1/2 mx-auto flex gap-x-2 mt-2">
