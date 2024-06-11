@@ -49,6 +49,7 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
         map.rotateTo(35, { duration: 0 })
 
         map.on('load', () => {
+            map.removeLayer('poi-label')
             renderRoute(map, type).then(() => {
                 gsap.to(wrapper, { opacity: 1, duration: 2 })
             })
