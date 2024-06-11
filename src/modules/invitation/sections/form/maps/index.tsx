@@ -5,6 +5,7 @@ import { CENTER_LAT, CENTER_LONG } from '../data/coordinates'
 import { MarkerType } from '../markers'
 import Markers from './markers'
 import gsap from 'gsap'
+import { renderRoute } from './route'
 
 export interface MapInvitation extends mapboxgl.Map {
     markers?: mapboxgl.Marker[]
@@ -48,7 +49,9 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
         map.rotateTo(35, { duration: 0 })
 
         map.on('load', () => {
-            gsap.to(wrapper, { opacity: 1, duration: 2 })
+            renderRoute(map, type).then(() => {
+                gsap.to(wrapper, { opacity: 1, duration: 2 })
+            })
         })
 
         setMap(map)
@@ -65,6 +68,14 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
         }
     }, [])
 
+    useEffect(() => {
+        if (!map) {
+            return
+        }
+
+        renderRoute(map, type)
+    }, [type])
+
     useImperativeHandle(
         ref,
         () => {
@@ -75,7 +86,9 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
 
     return (
         <>
-            <div className="w-full h-full" id="map-invitation" />
+            <div className="w-full h-full" id="map-invitation">
+                <div className="w-9 h-9 bg-red-500"></div>
+            </div>
             {map && <Markers map={map} type={type} />}
         </>
     )

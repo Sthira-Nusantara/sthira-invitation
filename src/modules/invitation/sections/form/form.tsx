@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { PropsWithChildren, useRef, useState } from 'react'
 import { setUserVehicle } from '../../action/set-vehicle'
 import { MarkerType } from './markers'
+import moment from 'moment'
 
 export interface AttendanceFormProps {
     vehicle?: MarkerType
@@ -72,7 +73,10 @@ export default function AttendanceForm({ setVehicle }: AttendanceFormProps) {
         setIsLoading(true)
 
         if (vehicleType !== 'motorcycle') {
-            downloadFile('/images/Stiker Parkir Grand Opening SN.jpg', 'Stiker Parkir Grand Opening SN.jpg')
+            downloadFile(
+                '/images/Stiker Parkir Grand Opening SN.jpg',
+                `Stiker Parkir Grand Opening SN [${moment().format('SSS')}].jpg`,
+            )
         }
 
         if (user) {
@@ -163,7 +167,7 @@ export default function AttendanceForm({ setVehicle }: AttendanceFormProps) {
                                         height={300}
                                     />
                                 </div>
-                                <p className="text-xs flex-1 text-gray-300">
+                                <p className="text-xs flex-1 text-gray-300 text-justify">
                                     Gambar ini merupakan stiker parkir yang akan diunduh secara otomatis setelah tombol{' '}
                                     {'"'}Kirim{'"'} ditekan. Bapak/Ibu diharapkan mencetak stiker tersebut dan
                                     meletakkannya di dasbor mobil.

@@ -23,12 +23,13 @@ export default function ParkNonDriverMarker({ isGeneral }: BaseMarkerProps) {
         <div
             className={[
                 'bg-blue-600 p-1 rounded block absolute mx-auto',
-                isGeneral ? '-bottom-10 -left-6' : '-bottom-6 -left-6',
+                isGeneral ? '-bottom-10 -left-6' : '-bottom-6 -left-12',
             ].join(' ')}
             ref={markerRef}
         >
             <p className="text-white text-xs whitespace-nowrap font-bold text-center">
                 Lokasi Parkir
+                {!isGeneral && <span> (100 M)</span>}
                 {isGeneral && (
                     <>
                         {' '}

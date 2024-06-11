@@ -42,6 +42,9 @@ export default function Envelope() {
             duration: 1,
             scale: 0.3,
             ease: 'power2.out',
+            onComplete: () => {
+                openEnvelope()
+            },
         })
     }, [])
 
