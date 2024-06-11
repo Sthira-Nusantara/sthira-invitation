@@ -66,5 +66,4 @@ export const downloadFile = (pathName: string, filename: string) => {
     a.href = url.toString()
     a.download = filename
     a.click()
-    a.remove()
 }
