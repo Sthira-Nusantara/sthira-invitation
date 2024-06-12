@@ -4,8 +4,6 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import Flip from 'gsap/dist/Flip'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
-import Link from 'next/link'
-import { FaPhone } from 'react-icons/fa'
 
 export default function Hero() {
     useGSAP(() => {
@@ -76,17 +74,6 @@ export default function Hero() {
                     konvensional, menetapkan standar baru untuk kenyamanan, efisiensi, dan estetika dalam industri
                     pendinginan udara
                 </p>
-                <hr className="divider" />
-                <div className="min-h-14 mt-6">
-                    <Link
-                        href="/contact"
-                        className="call-button font-eczar text-xl px-4 py-2 whitespace-nowrap"
-                        id={'call-button'}
-                    >
-                        <span>Hubungi Kami Sekarang</span>
-                        <FaPhone className="hidden" />
-                    </Link>
-                </div>
             </div>
         </BackText>
     )
