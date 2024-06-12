@@ -29,8 +29,12 @@ export default function Markers({ type, map }: MarkerProps) {
                 map.markers.push(mark)
             }
 
+            const parent = mark.getElement()
+
+            parent.style.zIndex = '999'
+
             return {
-                parent: mark.getElement(),
+                parent,
                 children: marker.element,
                 marker: mark,
             }

@@ -22,7 +22,7 @@ export default function ParkWithDriverMarker({ isGeneral }: BaseMarkerProps) {
     return (
         <div
             className={[
-                'bg-green-600 p-1 rounded block absolute mx-auto',
+                'bg-green-600 p-1 rounded block absolute mx-auto z-50',
                 isGeneral ? '-bottom-10 -left-11' : '-bottom-6 -left-12',
             ].join(' ')}
             ref={markerRef}

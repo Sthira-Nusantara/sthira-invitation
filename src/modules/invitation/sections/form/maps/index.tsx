@@ -6,9 +6,11 @@ import { CENTER_LAT, CENTER_LONG } from '../data/coordinates'
 import { MarkerType } from '../markers'
 import Markers from './markers'
 import { renderRoute } from './route'
+import Buildings from './building'
 
 export interface MapInvitation extends mapboxgl.Map {
     markers?: mapboxgl.Marker[]
+    buildings?: mapboxgl.Marker[]
 }
 
 interface MapsProp {
@@ -32,7 +34,7 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
             container: wrapper,
             center: [CENTER_LONG, CENTER_LAT],
             style: 'mapbox://styles/mapbox/satellite-streets-v12',
-            zoom: 17,
+            zoom: 17.2,
             minZoom: 15.5,
             maxZoom: 19,
             dragRotate: false,
@@ -50,9 +52,8 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
 
         map.on('load', () => {
             map.removeLayer('poi-label')
-            renderRoute(map, type).then(() => {
-                gsap.to(wrapper, { opacity: 1, duration: 2 })
-            })
+            renderRoute(map, type)
+            gsap.to(wrapper, { opacity: 1, duration: 2 })
         })
 
         setMap(map)
@@ -88,7 +89,12 @@ function MapsComponent({ type }: MapsProp, ref: ForwardedRef<MapInvitation>) {
     return (
         <>
             <div className="w-full h-full" id="map-invitation" />
-            {map && <Markers map={map} type={type} />}
+            {map && (
+                <>
+                    <Markers map={map} type={type} />
+                    <Buildings map={map} />
+                </>
+            )}
         </>
     )
 }
