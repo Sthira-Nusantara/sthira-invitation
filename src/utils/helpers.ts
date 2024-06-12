@@ -70,8 +70,8 @@ export const downloadFile = (pathName: string, filename: string) => {
     a.target = '_blank'
     a.rel = 'noreferrer noopener'
 
-    a.click()
     document.body.appendChild(a)
+    a.click()
 
     setTimeout(() => {
         a.remove()
