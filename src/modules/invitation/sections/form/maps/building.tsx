@@ -34,7 +34,7 @@ const data: BuildingData[] = [
         element: (
             <div className="max-w-36 flex items-center flex-col">
                 <MarkerBuilding />
-                <p className="text-white text-xs">GRHA 317</p>
+                <p className="text-white text-xs">GRHA 137</p>
             </div>
         ),
     },

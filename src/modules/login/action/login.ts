@@ -1,5 +1,6 @@
 import { getUserData } from '@/modules/users/get-users'
 import { errNotFoundMsg, errPasswordMsg } from '@/pages/api/login'
+import { setLoggedInUser } from './user'
 
 export interface LoginDto {
     uxsr: string
@@ -44,6 +45,8 @@ export async function login(dto: LoginDto) {
         if (user.password !== password) {
             throw new Error(errPasswordMsg)
         }
+
+        setLoggedInUser(user)
 
         return user
     } catch (error) {
