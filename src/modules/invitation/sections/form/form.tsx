@@ -49,7 +49,15 @@ export default function AttendanceForm({ setVehicle }: AttendanceFormProps) {
 
     const formOut = (el: HTMLElement | null) => {
         gsap.set(el, { position: 'absolute' })
-        gsap.to(el, { y: -1000, opacity: 0, display: 'none', duration: 1 })
+        gsap.to(el, {
+            y: -1000,
+            opacity: 0,
+            display: 'none',
+            duration: 1,
+            onComplete: () => {
+                el?.remove()
+            },
+        })
     }
 
     useGSAP(() => {

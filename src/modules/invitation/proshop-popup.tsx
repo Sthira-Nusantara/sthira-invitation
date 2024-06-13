@@ -17,7 +17,7 @@ export default function ProshopPopup() {
             display: 'none',
         })
 
-        const tl = gsap.timeline({ delay: 2 })
+        const tl = gsap.timeline({ delay: 1.25 })
 
         tl.set(wrapperRef.current, { display: 'flex', zIndex: -100 })
 
@@ -31,12 +31,15 @@ export default function ProshopPopup() {
         }
 
         tl.from(cardWrapperRef.current, {
-            duration: 1,
+            duration: 0.75,
             scale: 0,
             ease: ease(),
         })
 
         tl.set(wrapperRef.current, { zIndex: 100 })
+        tl.add(() => {
+            document.body.classList.add('overflow-hidden')
+        }, 0)
 
         tl.from(cardRef.current, {
             opacity: 0,
@@ -60,6 +63,7 @@ export default function ProshopPopup() {
                 <div
                     className="absolute right-0 top-0 bg-primary-dark text-center p-2 rounded-bl-xl cursor-pointer"
                     onClick={() => {
+                        document.body.classList.remove('overflow-hidden')
                         wrapperRef.current?.remove()
                     }}
                 >

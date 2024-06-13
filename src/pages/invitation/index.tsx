@@ -57,7 +57,7 @@ export default function Invitation() {
                         <FontAwesomeIcon icon={faArrowDown} className="text-3xl text-red-600 h-8" />
                     </div>
                 </div>
-                {user?.username?.toLowerCase()?.startsWith('proshop') && <ProshopPopup />}
+                {user?.username?.toLowerCase()?.includes('proshop') && <ProshopPopup />}
                 <InvitationHome />
                 <InvitationVideo videoRef={videoRef} />
                 <InvitationForm />
