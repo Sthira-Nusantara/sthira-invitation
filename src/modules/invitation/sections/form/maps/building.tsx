@@ -32,9 +32,9 @@ const data: BuildingData[] = [
         latitude: -6.143804840251852,
         longitude: 106.83170906197131,
         element: (
-            <div className="max-w-36 flex items-center flex-col">
+            <div className="max-w-36 flex items-center flex-col text-slate-200">
                 <MarkerBuilding />
-                <p className="text-white text-xs">GRHA 137</p>
+                <p className="text-xs">GRHA 137</p>
             </div>
         ),
     },
