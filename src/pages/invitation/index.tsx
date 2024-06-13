@@ -24,6 +24,8 @@ export default function Invitation() {
         })
     }, [])
 
+    return <InvitationForm />
+
     return (
         <>
             <Head>

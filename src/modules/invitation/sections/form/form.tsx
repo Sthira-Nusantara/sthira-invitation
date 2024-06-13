@@ -3,11 +3,11 @@ import { downloadFile } from '@/utils/helpers'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+import moment from 'moment'
 import Image from 'next/image'
 import { PropsWithChildren, useRef, useState } from 'react'
 import { setUserVehicle } from '../../action/set-vehicle'
 import { MarkerType } from './markers'
-import moment from 'moment'
 
 export interface AttendanceFormProps {
     vehicle?: MarkerType
@@ -32,14 +32,30 @@ function Button({
 
 export default function AttendanceForm({ setVehicle }: AttendanceFormProps) {
     const confirmAttendRef = useRef<HTMLDivElement>(null)
+    const vehicleRef = useRef<HTMLDivElement>(null)
     const formRef = useRef<HTMLDivElement>(null)
+
     const [vehicleType, setVehicleType] = useState<MarkerType | 'car'>()
     const [isLoading, setIsLoading] = useState(false)
     const { user } = useApp()
 
+    const formInitial = (el: HTMLElement | null) => {
+        gsap.set(el, { y: 1000, opacity: 0, display: 'none' })
+    }
+
+    const formIn = (el: HTMLElement | null) => {
+        gsap.to(el, { y: 0, opacity: 1, display: 'flex', duration: 1 })
+    }
+
+    const formOut = (el: HTMLElement | null) => {
+        gsap.set(el, { position: 'absolute' })
+        gsap.to(el, { y: -1000, opacity: 0, display: 'none', duration: 1 })
+    }
+
     useGSAP(() => {
-        gsap.set(confirmAttendRef.current, { scale: 0, opacity: 0 })
-        gsap.set(formRef.current, { y: 1000, opacity: 0, display: 'none' })
+        formInitial(confirmAttendRef.current)
+        formInitial(vehicleRef.current)
+        formInitial(formRef.current)
 
         ScrollTrigger.create({
             trigger: 'section#form',
@@ -47,24 +63,28 @@ export default function AttendanceForm({ setVehicle }: AttendanceFormProps) {
             end: 'top-=50 top',
             // markers: true,
             onEnter: () => {
-                gsap.to(confirmAttendRef.current, { scale: 1, opacity: 1, duration: 2 })
+                formIn(confirmAttendRef.current)
             },
         })
     }, [])
 
-    const notAttend = () => {
+    const setVehicleAll = (type: 'not-attend' | 'without-vehicle') => {
         setVehicle('all')
         if (user) {
-            setUserVehicle({ uxsr: user.username, vehicle: 'not-attend' }).catch(() => {
+            setUserVehicle({ uxsr: user.username, vehicle: type }).catch(() => {
                 console.error('ERROR When update user vehicle')
             })
         }
     }
 
     const attend = () => {
-        gsap.set(confirmAttendRef.current, { position: 'absolute' })
-        gsap.to(confirmAttendRef.current, { y: -1000, opacity: 0, display: 'none', duration: 1 })
-        gsap.to(formRef.current, { y: 0, opacity: 1, display: 'flex', duration: 1 })
+        formOut(confirmAttendRef.current)
+        formIn(vehicleRef.current)
+    }
+
+    const bringVehicle = () => {
+        formOut(vehicleRef.current)
+        formIn(formRef.current)
     }
 
     const sendForm = async () => {
@@ -106,7 +126,7 @@ export default function AttendanceForm({ setVehicle }: AttendanceFormProps) {
                 <div className="w-full flex justify-end items-end">
                     <button
                         className="text-lg px-4 py-1 rounded-tl-lg bg-gray-400 hover:bg-gray-500 text-white w-fit h-fit"
-                        onClick={notAttend}
+                        onClick={() => setVehicleAll('not-attend')}
                     >
                         Tidak Hadir
                     </button>
@@ -115,6 +135,28 @@ export default function AttendanceForm({ setVehicle }: AttendanceFormProps) {
                         onClick={attend}
                     >
                         Hadir
+                    </button>
+                </div>
+            </div>
+            <div
+                className="w-full max-w-96 h-96 bg-blue-300 rounded-tr-3xl rounded-bl-3xl flex flex-col"
+                ref={vehicleRef}
+            >
+                <div className="flex-1 flex justify-center items-center px-3">
+                    <p className="text-2xl text-center">Apakah Bapak/Ibu membawa kendaraan pribadi?</p>
+                </div>
+                <div className="w-full flex justify-end items-end">
+                    <button
+                        className="text-lg px-4 py-1 rounded-tl-lg bg-gray-400 hover:bg-gray-500 text-white w-fit h-fit"
+                        onClick={() => setVehicleAll('without-vehicle')}
+                    >
+                        Tidak
+                    </button>
+                    <button
+                        className="text-2xl px-4 py-2 rounded-tl-lg bg-white text-blue-300 w-fit h-fit font-bold hover:bg-gray-200"
+                        onClick={bringVehicle}
+                    >
+                        Iya
                     </button>
                 </div>
             </div>
