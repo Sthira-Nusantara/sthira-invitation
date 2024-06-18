@@ -70,7 +70,7 @@ export default function Popup() {
                     <FontAwesomeIcon icon={faTimes} className="text-white fill-white w-5 h-5" />
                 </div>
                 <div ref={cardRef} className="w-full h-full py-5 flex items-center justify-center">
-                    <p className="text-center">{user?.notes}</p>
+                    <p className="text-center text-sm md:text-base">{user?.notes}</p>
                 </div>
             </div>
         </div>

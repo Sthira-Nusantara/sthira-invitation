@@ -11,15 +11,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useRef } from 'react'
 
 export default function Invitation() {
     const { user } = useApp()
+    const router = useRouter()
 
     const wrapperRef = useRef<HTMLDivElement>(null)
     const videoRef = useRef<VideoFrameElement>(null)
 
     useGSAP(() => {
+        if (!user) {
+            gsap.set(wrapperRef.current, { opacity: 0 })
+            router.replace('/login')
+            return
+        }
+
         gsap.from(wrapperRef.current, {
             opacity: 0,
             duration: 1,
