@@ -1,6 +1,6 @@
 import { useApp } from '@/context/app/useContext'
 import LogoBackground from '@/modules/invitation/logo-bg'
-import ProshopPopup from '@/modules/invitation/proshop-popup'
+import Popup from '@/modules/invitation/popup'
 import InvitationForm from '@/modules/invitation/sections/form'
 import InvitationHome from '@/modules/invitation/sections/home'
 import InvitationTime from '@/modules/invitation/sections/time'
@@ -57,7 +57,7 @@ export default function Invitation() {
                         <FontAwesomeIcon icon={faArrowDown} className="text-3xl text-red-600 h-8" />
                     </div>
                 </div>
-                {user?.username?.toLowerCase()?.includes('proshop') && <ProshopPopup />}
+                {user?.notes?.trim() && <Popup />}
                 <InvitationHome />
                 <InvitationVideo videoRef={videoRef} />
                 <InvitationForm />

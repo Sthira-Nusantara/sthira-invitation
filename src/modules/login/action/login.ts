@@ -31,7 +31,7 @@ export interface LoginDto {
 export async function login(dto: LoginDto) {
     try {
         const username = (dto.uxsr || '').trim().toUpperCase()
-        const password = (dto.pxwd || '').trim()
+        const password = (dto.pxwd || '').trim().toUpperCase()
 
         if (!username || !password) {
             throw new Error(errNotFoundMsg)
@@ -42,7 +42,7 @@ export async function login(dto: LoginDto) {
             throw new Error(errNotFoundMsg)
         }
 
-        if (user.password !== password) {
+        if (user.password !== password.toUpperCase()) {
             throw new Error(errPasswordMsg)
         }
 

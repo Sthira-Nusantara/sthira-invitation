@@ -151,7 +151,7 @@ export default function AttendanceForm({ setVehicle }: AttendanceFormProps) {
                 ref={vehicleRef}
             >
                 <div className="flex-1 flex justify-center items-center px-3">
-                    <p className="text-2xl text-center">Apakah Bapak/Ibu membawa kendaraan pribadi?</p>
+                    <p className="text-2xl text-center">Apakah Bapak/Ibu akan membawa kendaraan pribadi?</p>
                 </div>
                 <div className="w-full flex justify-end items-end">
                     <button

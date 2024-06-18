@@ -20,11 +20,11 @@ export const getUserData = async (username: string) => {
 
     const user = users[username]
     if (user) {
-        return user
+        return JSON.parse(JSON.stringify(user))
     }
 
     const newUsers = await refreshUsersData()
-    return newUsers[username] || null
+    return JSON.parse(JSON.stringify(newUsers[username] || null))
 }
 
 export const refreshUsersData = async () => {

@@ -5,8 +5,8 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { useRef } from 'react'
 
-export default function ProshopPopup() {
-    const { viewport } = useApp()
+export default function Popup() {
+    const { viewport, user } = useApp()
 
     const wrapperRef = useRef<HTMLDivElement>(null)
     const cardWrapperRef = useRef<HTMLDivElement>(null)
@@ -70,7 +70,7 @@ export default function ProshopPopup() {
                     <FontAwesomeIcon icon={faTimes} className="text-white fill-white w-5 h-5" />
                 </div>
                 <div ref={cardRef} className="w-full h-full py-5 flex items-center justify-center">
-                    <p className="text-center">Jika Ingin Membawa Cindera Mata, Mohon Yang Mahal</p>
+                    <p className="text-center">{user?.notes}</p>
                 </div>
             </div>
         </div>
