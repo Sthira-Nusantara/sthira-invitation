@@ -7,4 +7,4 @@ export const firebaseApp = initializeApp(FIREBASE_CONFIG)
 
 export const firebaseStorage = getStorage(firebaseApp)
 
-export const invitationDataRef = ref(firebaseStorage, 'sthira.id/invitation_data.json')
+export const invitationDataRef = ref(firebaseStorage, 'sthira.id/invitations_data.json')
