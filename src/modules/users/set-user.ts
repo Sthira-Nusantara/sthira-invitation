@@ -1,4 +1,5 @@
 import { uploadString } from 'firebase/storage'
+import { setLoggedInUser } from '../login/action/user'
 import { invitationDataRef } from './firebase'
 import { getUsersData } from './get-users'
 
@@ -14,22 +15,37 @@ export const setUserLogin = async (username: string) => {
     await uploadString(invitationDataRef, JSON.stringify(data))
 }
 
-export const setUserVehicle = async (
-    username: string,
+export const setUserData = async (
+    id: string,
     vehicle: 'driver' | 'non-driver' | 'motorcycle' | 'not-attend',
+    name?: string,
 ) => {
     const data = await getUsersData()
+    const [username] = id?.split('/')
     const userData = data[username]
 
     if (!userData) {
         return
     }
 
-    if (!Array.isArray(userData.vehicle)) {
-        userData.vehicle = [vehicle]
-    } else {
-        userData.vehicle.push(vehicle)
+    if (!userData.data) {
+        userData.data = {}
+    }
+
+    userData.data[id] = {
+        vehicle,
+        name,
     }
 
     await uploadString(invitationDataRef, JSON.stringify(data))
+    setLoggedInUser({
+        ...userData,
+        id,
+        data: {
+            [id]: {
+                vehicle,
+                name,
+            },
+        },
+    })
 }

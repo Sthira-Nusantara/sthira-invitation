@@ -1,9 +1,10 @@
-import { setUserVehicle as setVehicle } from '@/modules/users/set-user'
+import { setUserData } from '@/modules/users/set-user'
 import { errNotFoundMsg } from '@/pages/api/login'
 
 export interface SetVehicleDto {
     uxsr: string
     vehicle: string
+    name: string
 }
 
 // export async function setUserVehicle(dto: SetVehicleDto) {
@@ -29,12 +30,13 @@ export async function setUserVehicle(dto: SetVehicleDto) {
     try {
         const username = (dto.uxsr || '').trim().toUpperCase()
         const vehicle = (dto.vehicle || '').trim()
+        const name = (dto.name || '').trim()
 
         if (!username || !vehicle) {
             throw new Error(errNotFoundMsg)
         }
 
-        await setVehicle(username, vehicle as any)
+        await setUserData(username, vehicle as any, name)
 
         return true
     } catch (error) {

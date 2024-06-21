@@ -4,5 +4,16 @@ export interface InvitationUserData {
     password: string
     notes?: string
     lastLoggedIn?: Date
-    vehicle?: ('driver' | 'non-driver' | 'motorcycle' | 'not-attend')[]
+    type: 'general' | 'personal'
+    data?: Record<
+        string,
+        {
+            vehicle: 'driver' | 'non-driver' | 'motorcycle' | 'not-attend'
+            name?: string
+        }
+    >
+}
+
+export interface UserData extends InvitationUserData {
+    id: string
 }

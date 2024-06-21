@@ -15,7 +15,7 @@ export const getUsersData = async () => {
     return data
 }
 
-export const getUserData = async (username: string) => {
+export const getUserData = async (username: string): Promise<InvitationUserData> => {
     const users = await getUsersData()
 
     const user = users[username]

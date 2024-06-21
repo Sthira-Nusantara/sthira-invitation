@@ -1,10 +1,10 @@
 import { getLoggedInUser } from '@/modules/login/action/user'
-import { InvitationUserData } from '@/modules/users/types/user'
+import { UserData } from '@/modules/users/types/user'
 import { PropsWithChildren, useEffect, useState } from 'react'
 import { AppContext } from './state'
 
 export default function AppProvider({ children }: PropsWithChildren) {
-    const [user, setUser] = useState<InvitationUserData>()
+    const [user, setUser] = useState<UserData>()
     const [viewport, setViewport] = useState<[number, number]>([0, 0])
     const [isLoaded, setIsLoaded] = useState(false)
 
