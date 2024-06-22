@@ -53,7 +53,7 @@ export default function Popup() {
 
     return (
         <div
-            className="w-screen h-screen fixed bg-black bg-opacity-40 flex items-center justify-center px-3"
+            className="w-screen h-screen fixed bg-black bg-opacity-40 flex items-center justify-center"
             ref={wrapperRef}
         >
             <div
@@ -69,7 +69,7 @@ export default function Popup() {
                 >
                     <FontAwesomeIcon icon={faTimes} className="text-white fill-white w-5 h-5" />
                 </div>
-                <div ref={cardRef} className="w-full h-full py-5 flex items-center justify-center">
+                <div ref={cardRef} className="w-full h-full py-5 px-2 flex items-center justify-center">
                     <p className="text-center text-sm md:text-base">{user?.notes}</p>
                 </div>
             </div>
