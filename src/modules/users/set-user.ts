@@ -32,6 +32,7 @@ export const setUserData = async (
         userData.data = {}
     }
 
+    name = name || userData.data?.[id]?.name
     userData.data[id] = {
         vehicle,
         name,

@@ -1,0 +1,33 @@
+@media (min-height: 650px) {
+    .logo {
+        @apply md:w-24 md:h-24;
+    }
+
+    .textGreeting {
+        @apply md:text-sm;
+    }
+
+    .logoProshop {
+        @apply md:w-40;
+    }
+
+    .textSN {
+        @apply md:text-3xl;
+    }
+
+    .dateWrapper {
+        @apply md:h-32;
+    }
+
+    .dateText {
+        @apply md:text-2xl;
+    }
+
+    .dateDetailText {
+        @apply md:text-xl;
+    }
+
+    .addressText {
+        @apply md:text-sm;
+    }
+}

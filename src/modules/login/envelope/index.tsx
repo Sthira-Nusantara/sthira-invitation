@@ -1,4 +1,5 @@
 import { useApp } from '@/context/app/useContext'
+import { errPasswordMsg } from '@/pages/api/login'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import Flip from 'gsap/dist/Flip'
@@ -8,7 +9,6 @@ import { LoginDto, login } from '../action/login'
 import styles from '../styles/envelope.module.css'
 import EnvelopeCard from './card'
 import EnvelopeTop from './top'
-import { errPasswordMsg } from '@/pages/api/login'
 
 export default function Envelope() {
     const router = useRouter()
@@ -117,6 +117,7 @@ export default function Envelope() {
             setIsLoading(false)
 
             gsap.to(`.${styles.envelope}`, {
+                padding: 0,
                 opacity: 0,
                 duration: 2,
                 scale: 10,

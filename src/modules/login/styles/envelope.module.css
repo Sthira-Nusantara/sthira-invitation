@@ -2,6 +2,12 @@
     @apply w-full max-w-[400px] mx-auto relative;
 }
 
+@media (max-height: 650px) {
+    .envelope {
+        @apply pt-36;
+    }
+}
+
 .envelopeTop .trapezium {
     @apply w-full h-full box-border absolute -z-10 top-0 left-0;
     border-left: 13px solid transparent;
