@@ -53,7 +53,7 @@ export default function Popup() {
 
     return (
         <div
-            className="w-screen h-screen fixed bg-black bg-opacity-40 flex items-center justify-center"
+            className="w-screen h-screen fixed bg-black bg-opacity-40 flex items-center justify-center px-3"
             ref={wrapperRef}
         >
             <div

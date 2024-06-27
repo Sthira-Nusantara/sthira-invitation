@@ -1,19 +1,33 @@
 import { SNLogoOnly } from '@/assets/icons'
 import { OPENING_DATE } from '@/config/config'
 import { useApp } from '@/context/app/useContext'
-import { faClock, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, faClock, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/home.module.css'
 import { MenuBaseProps } from '../types/menu-base-props'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 
 export default function InvitationHome({}: MenuBaseProps) {
     const { user } = useApp()
 
+    useGSAP(() => {
+        ScrollTrigger.create({
+            trigger: '#home',
+            start: 'top+=100 top',
+            end: 'top+=100 top',
+            onEnter: () => {
+                gsap.to('#scroll-cta', { opacity: 0, duration: 1, display: 'none' })
+            },
+        })
+    }, [])
+
     return (
         <section
-            className="w-screen min-h-screen overflow-hidden flex items-center justify-center invitation"
+            className="w-screen min-h-screen overflow-hidden flex items-center justify-center invitation relative"
             id="home"
         >
             <div className="container mx-auto flex flex-col items-center px-3 h-fit">
@@ -78,6 +92,22 @@ export default function InvitationHome({}: MenuBaseProps) {
                         Komp. Ruko, Jl. Pangeran Jayakarta No.135, RT.7/RW.7, Mangga Dua Sel., Kecamatan Sawah Besar,
                         Kota Jakarta Pusat.
                     </Link>
+                </div>
+            </div>
+
+            <div
+                className="absolute bottom-0 w-full"
+                id="scroll-cta"
+                onClick={() => {
+                    const video = document.getElementById('video')
+                    video?.scrollIntoView({ behavior: 'smooth' })
+                }}
+            >
+                <div className="mx-auto w-fit flex flex-col justify-center animate-bounce cursor-pointer">
+                    <p className="text-center text-xs md:text-base text-white">
+                        PENDAFTARAN UNDANGAN & <br /> INFO SELANJUTNYA
+                    </p>
+                    <FontAwesomeIcon icon={faArrowDown} className="text-3xl text-red-600 h-8" />
                 </div>
             </div>
         </section>
