@@ -23,6 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <>
             <Head>
                 <title>Sthira Nusantara</title>
+                <meta name="robots" content="noindex" />
                 <meta name="description" content="Sthira Nusantara the reliable partner you can trust" />
                 <meta
                     name="keywords"

@@ -7,7 +7,7 @@ export default function InvitationForm() {
     const [vehicle, setVehicle] = useState<MarkerType>()
 
     return (
-        <section className="w-screen h-screen overflow-hidden invitation py-8" id="form">
+        <section className="w-screen h-screen overflow-visible invitation" id="form">
             {vehicle ? <ShowMaps vehicle={vehicle} /> : <AttendanceForm vehicle={vehicle} setVehicle={setVehicle} />}
         </section>
     )

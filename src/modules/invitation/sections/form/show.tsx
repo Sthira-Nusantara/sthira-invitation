@@ -38,7 +38,7 @@ export default function ShowMaps({ vehicle }: ShowMapsProps) {
     }, [])
 
     return (
-        <div className="container mx-auto flex flex-col h-full" ref={wrapperRef}>
+        <div className="container mx-auto flex flex-col h-full py-8" ref={wrapperRef}>
             <MapsAttendance vehicleType={vehicle} />
         </div>
     )
